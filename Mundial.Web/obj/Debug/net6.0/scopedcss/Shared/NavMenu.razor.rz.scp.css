@@ -1,0 +1,105 @@
+.navbar-toggler[b-9wf9otedbu] {
+    background-color: rgba(255, 255, 255, 0.1);
+    align-items: center;
+}
+
+
+
+.top-row[b-9wf9otedbu] {
+    height: 6.0rem;
+    background: linear-gradient(0deg, rgba(158,23,56,1) 0%, rgba(75,13,28,1) 0%);
+    margin: 0px;
+}
+
+.custom-bar[b-9wf9otedbu] {
+    background-color: #38b9cd !important;
+    color: white;
+    font-weight: bold;
+}
+
+.background[b-9wf9otedbu] {
+    background: rgb(158,23,56);
+    background: linear-gradient(180deg, rgba(158,23,56,1) 7%, rgba(75,13,28,1) 67%);
+
+}
+
+.logo-toledo[b-9wf9otedbu] {
+    width: 160px;
+    height: 70px;
+    align-items: center;
+}
+
+
+
+.LoginBackground[b-9wf9otedbu] {
+    background: rgb(158,23,56);
+    background: radial-gradient(circle, rgba(158,23,56,1) 20%, rgba(75,13,28,1) 81%);
+}
+
+
+
+
+.text-blue[b-9wf9otedbu] {
+    color: #0d2640
+}
+
+.custom-nav[b-9wf9otedbu] {
+    margin-top: 7%;
+}
+
+
+.navbar-brand[b-9wf9otedbu] {
+    font-size: 1.1rem;
+}
+
+.oi[b-9wf9otedbu] {
+    width: 2rem;
+    font-size: 1.1rem;
+    vertical-align: text-top;
+    top: -2px;
+}
+
+.nav-item[b-9wf9otedbu] {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+}
+
+    .nav-item:first-of-type[b-9wf9otedbu] {
+        padding-top: 1rem;
+    }
+
+    .nav-item:last-of-type[b-9wf9otedbu] {
+        padding-bottom: 1rem;
+    }
+
+    .nav-item[b-9wf9otedbu]  a {
+        color: #d7d7d7;
+        border-radius: 4px;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        line-height: 3rem;
+    }
+
+.nav-item[b-9wf9otedbu]  a.active {
+    background-color: rgba(255,255,255,0.25);
+    color: white;
+}
+
+.nav-item[b-9wf9otedbu]  a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
+
+@media (min-width: 641px) {
+    .navbar-toggler[b-9wf9otedbu] {
+        display: none;
+    }
+
+    .collapse[b-9wf9otedbu] {
+        /* Never collapse the sidebar for wide screens */
+        display: block;
+    }
+}
+
+

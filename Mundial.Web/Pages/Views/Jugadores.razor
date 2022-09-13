@@ -1,0 +1,78 @@
+﻿@page "/jugadores"
+
+
+@if (ListaEquipos.Count() > 0)
+{
+<MudGrid Class="mb-1" Justify="Justify.Center">
+	<MudText Typo="Typo.button" Style="font-size:large;"> Seleccione un equipo </MudText>
+	<MudDivider />
+	<MudItem xs="12">
+		@foreach (var equipo in ListaEquipos)
+		{
+			<MudButton ButtonType="ButtonType.Submit" OnClick="(()=>JugadoresXequipoByEquipo(equipo.IdEquipo))">
+				<div class="zoom">
+				<MudImage Class="zoom" Src="@equipo.Imagen"></MudImage>
+				</div>
+				</MudButton>
+		}
+	</MudItem>
+</MudGrid>	
+}
+
+
+@if (ListaJugadoresByIdEquipo != null)
+{
+
+	<MudItem Class="m-2" xs="12">
+		<MudCard>
+			<MudCardHeader>
+				<CardHeaderContent>
+					<MudText Typo="Typo.button"><MudImage Class="zoom" src="@EquipoElejido.Imagen" alt="Bandera del equipo"/> @EquipoElejido.Nombre</MudText>
+				</CardHeaderContent>
+			</MudCardHeader>
+			<MudCardContent>
+			<table class="table table-striped text-center table-bordered">
+				<thead>
+					<tr>
+						<th scope="col"></th>
+						<th scope="col">Nombre</th>
+						<th scope="col">Puesto</th>
+						<th scope="col">Goles</th>
+						<th scope="col">Amarillas</th>
+						<th scope="col">Rojas</th>
+					</tr>
+				</thead>
+				<tbody>
+				
+					@foreach(var jugadores in ListaJugadoresByIdEquipo)
+					{
+						<tr>
+							<td>
+								<img src="@jugadores.Imagen" height="70px" width="70px"/>
+							</td>
+							<td>@jugadores.Nombre</td>
+							<td>@jugadores.Puesto </td>
+							<td>@jugadores.GolesFavor </td>
+							<td>@jugadores.TarjetasAmarillas</td>
+							<td>@jugadores.TarjetasRojas</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+			</MudCardContent>
+			<br /><br />
+		</MudCard>
+
+	</MudItem>
+	
+
+}
+
+
+
+@code {
+
+
+
+
+}

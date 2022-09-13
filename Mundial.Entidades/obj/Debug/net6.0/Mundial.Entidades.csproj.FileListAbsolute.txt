@@ -1,0 +1,12 @@
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.Entidades\bin\Debug\net6.0\Mundial.Entidades.deps.json
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.Entidades\bin\Debug\net6.0\Mundial.Entidades.dll
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.Entidades\bin\Debug\net6.0\Mundial.Entidades.pdb
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.Entidades\obj\Debug\net6.0\Mundial.Entidades.csproj.AssemblyReference.cache
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.Entidades\obj\Debug\net6.0\Mundial.Entidades.GeneratedMSBuildEditorConfig.editorconfig
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.Entidades\obj\Debug\net6.0\Mundial.Entidades.AssemblyInfoInputs.cache
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.Entidades\obj\Debug\net6.0\Mundial.Entidades.AssemblyInfo.cs
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.Entidades\obj\Debug\net6.0\Mundial.Entidades.csproj.CoreCompileInputs.cache
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.Entidades\obj\Debug\net6.0\Mundial.Entidades.dll
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.Entidades\obj\Debug\net6.0\refint\Mundial.Entidades.dll
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.Entidades\obj\Debug\net6.0\Mundial.Entidades.pdb
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.Entidades\obj\Debug\net6.0\ref\Mundial.Entidades.dll

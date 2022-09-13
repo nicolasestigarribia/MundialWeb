@@ -1,0 +1,42 @@
+body[b-mka92olf93] {
+    margin : 0px;
+}
+
+.colorHeader[b-mka92olf93] {
+    background-color: #711129;
+    color: white;
+}
+
+
+/* Si la pantalla esta en lo mas chico  */
+@media (max-width: 641px) {
+   .botonAnterior[b-mka92olf93]{
+       display: flex;
+       justify-content: center;
+   }
+
+    .botonSiguiente[b-mka92olf93] {
+        display: flex;
+        justify-content: center;
+    }
+
+}
+
+
+/* Si la pantalla esta en lo mediano */
+@media (max-width: 768px) {
+
+    .imagen[b-mka92olf93] {
+        width: 40%;
+    }
+}
+
+/* Si la pantalla esta en lo mas grande  */
+@media (min-width: 768px) {
+    .botonSiguiente[b-mka92olf93] {
+        display: flex;
+        justify-content: end;
+    }
+}
+
+

@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Mundial.EF": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:56483;http://localhost:56484"
+    }
+  }
+}

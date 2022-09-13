@@ -1,0 +1,33 @@
+﻿@page "/Actualizar"
+
+<div class="row d-flex align-items-center" style="height: 700px;">
+    <div class="col-lg-3 col-sm-2">
+    </div>
+    <div class="col-6 col-sm-8 d-flex justify-content-center">
+        <MudCard Style="width: 100%; border: 3px solid #711129;">
+            <MudCardHeader Class="d-flex justify-content-center">
+                <MudText Class="colorMundialTexto" Typo="Typo.button" Style="font-size: 30px;"> Actualizar Puntajes </MudText>
+            </MudCardHeader>    
+            <MudDivider Style="background: #711129;"/>
+            <MudCardContent>
+                <MudProgressLinear Color="Color.Primary" Buffer=true Striped="true" Size="Size.Large" Value="@Value" BufferValue="@BufferValue" Class="my-4" />
+            </MudCardContent>
+            <MudCardActions>
+                <div class=" row">
+                    <div class="col-12">
+                        <MudText Typo="Typo.button" Class="colorMundialTexto" Style="font-size: 15px;">Registros Actualizados : @cantRegistros</MudText>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <MudButton Style="color: whitesmoke; background: #711129;" Size="Size.Large" OnClick="BtnActualizarAsync"> Actualizar </MudButton>
+                    </div>
+                </div>
+            </MudCardActions>
+        </MudCard>
+    </div>
+    <div class="col-lg-3 col-sm-2">
+    </div>
+</div>
+
+@code {
+
+}

@@ -1,0 +1,13 @@
+﻿@page "/Logout"
+@using Mundial.Web.Services
+@inject  ILoginService loginService
+@inject NavigationManager Navigator
+
+
+@code {
+    protected async override Task OnInitializedAsync() {
+        await loginService.LogOut();
+        Navigator.NavigateTo("/");
+    }
+
+}

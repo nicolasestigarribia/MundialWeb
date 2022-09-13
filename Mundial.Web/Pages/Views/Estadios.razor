@@ -1,0 +1,28 @@
+﻿@page "/Estadios"
+
+<div class="row col-12 justify-content-around">
+        @if (ListaEstadios != null)
+        {
+            @foreach (var estadio in ListaEstadios)
+            {
+                <MudCard Class="col-3" Style="margin: 15px;">
+                    <MudCardHeader>
+                        <CardHeaderContent>
+                            <MudText Typo="Typo.h6">@estadio.Nombre.Trim()</MudText>
+                            <MudText Typo="Typo.subtitle1">@estadio.Ciudad</MudText>
+                        </CardHeaderContent>
+                    </MudCardHeader>
+                        <MudCardMedia Image="@estadio.Imagen" Height="250" />
+                    <MudCardContent>
+                        <MudText Typo="Typo.body2">@estadio.Descripcion</MudText>
+                        <br/>
+                        <MudText Typo="Typo.body1"> Capacidad: @estadio.Capacidad</MudText>
+                    </MudCardContent>
+                </MudCard>
+            }
+        }
+    </div>
+
+@code {
+
+}

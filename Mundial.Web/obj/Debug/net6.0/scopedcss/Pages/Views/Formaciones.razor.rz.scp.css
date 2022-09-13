@@ -1,0 +1,78 @@
+body[b-4b0va86ujp] {
+
+}
+
+
+.floating-button[b-4b0va86ujp] {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.icon-floating[b-4b0va86ujp] {
+    background-color: mediumspringgreen;
+}
+
+
+
+ /*Si la pantalla esta en lo mas chico*/  
+@media (max-width: 641px) {
+
+    .scroll[b-4b0va86ujp] {
+        max-width:636px;
+        overflow-x: auto;
+    }
+        .scroll .row[b-4b0va86ujp] {
+            max-width: 636px;
+        }
+
+    .item[b-4b0va86ujp] {
+        min-width: 117px;
+        max-width: 156px;
+    }
+
+
+    .imagen[b-4b0va86ujp] {
+        background-image: url('./images/cancha2.jpg');
+        background-repeat: no-repeat;
+        min-width: 636px;
+        min-height: 630px;
+    }
+}
+
+ /*Si la pantalla esta en lo mediano*/ 
+@media (max-width: 768px) {
+
+    .imagen[b-4b0va86ujp] {
+        background-image: url('./images/cancha2.jpg');
+        background-repeat: no-repeat;
+    }
+}
+
+ /*Si la pantalla esta en lo mas grande*/  
+@media (min-width: 768px) {
+
+    .imagen[b-4b0va86ujp] {
+        background-image: url('./images/cancha2.jpg');
+        background-repeat: no-repeat;
+        
+    }
+
+    .scroll[b-4b0va86ujp] {
+        max-width: 636px;
+        overflow-x: auto;
+    }
+
+        .scroll .row[b-4b0va86ujp] {
+            max-width: 630px;
+        }
+
+    .item[b-4b0va86ujp] {
+        min-width: 117px;
+    }
+
+
+
+}
+
+

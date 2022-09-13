@@ -1,0 +1,17 @@
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.EF\bin\Debug\net6.0\Mundial.EF.deps.json
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.EF\bin\Debug\net6.0\Mundial.EF.runtimeconfig.json
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.EF\bin\Debug\net6.0\Mundial.EF.dll
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.EF\bin\Debug\net6.0\Mundial.EF.pdb
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.EF\bin\Debug\net6.0\Mundial.Entidades.dll
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.EF\bin\Debug\net6.0\Mundial.Entidades.pdb
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.EF\obj\Debug\net6.0\Mundial.EF.csproj.AssemblyReference.cache
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.EF\obj\Debug\net6.0\Mundial.EF.GeneratedMSBuildEditorConfig.editorconfig
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.EF\obj\Debug\net6.0\Mundial.EF.AssemblyInfoInputs.cache
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.EF\obj\Debug\net6.0\Mundial.EF.AssemblyInfo.cs
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.EF\obj\Debug\net6.0\Mundial.EF.csproj.CoreCompileInputs.cache
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.EF\obj\Debug\net6.0\Mundial.EF.csproj.CopyComplete
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.EF\obj\Debug\net6.0\Mundial.EF.dll
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.EF\obj\Debug\net6.0\refint\Mundial.EF.dll
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.EF\obj\Debug\net6.0\Mundial.EF.pdb
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.EF\obj\Debug\net6.0\Mundial.EF.genruntimeconfig.cache
+C:\SVN\NET\Ejemplos\Mundial2022\Mundial.EF\obj\Debug\net6.0\ref\Mundial.EF.dll

@@ -1,0 +1,1112 @@
+﻿@page "/Preguntas"
+@inject ISnackbar Snackbar;
+@using Mundial.Entidades
+@attribute [Authorize]
+
+	<MudGrid Style="margin: 0px;">
+
+		@foreach (var pregunta in ListaPreguntas)
+		{
+			/* ¿Cual será el jugador de ARGENTINA con mas tarjetas (rojas y amarillas) al finalizar la copa? Puntaje: 10 */
+			@if(pregunta.IdPregunta ==1)
+			{
+			<MudItem xs="12">
+				<MudCard>
+					<div class="row justify-content-between p-3">
+						<div class="col-sm-2 col-lg-2 ">	
+							<MudText Typo="Typo.button">Pregunta n°@pregunta.IdPregunta</MudText>
+						</div>
+						<div class="col-sm-2 col-lg-2 ">	
+							<MudText Typo="Typo.button">Puntos: @pregunta.Puntaje</MudText>
+						</div>
+					</div>
+					<div class="row ">
+						<div class="col-lg-12 m-3">
+							<MudText>@pregunta.Pregunta1</MudText>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-6 col-sm-12 m-3">
+							<MudSelect Disabled=deshabilitar @bind-Value="rtaCompuesta1" Margin="Margin.Dense" T="int" Label="Elegir Jugador" Variant="Variant.Outlined" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Info">
+								<MudSelectItem Value="0">Elija un jugador...</MudSelectItem>
+								@foreach (Jugador jugador in ListaJugadores)
+								{
+								<MudSelectItem Value="@jugador.IdJugador"> @jugador.Nombre (@jugador.Puesto) </MudSelectItem>
+								}
+							</MudSelect>
+						</div>
+					</div>
+				</MudCard>
+			</MudItem>
+			}
+			/* ¿Cual será el resultado de ARGENTINA ante Islandia? Puntaje: 8*/
+			@if(pregunta.IdPregunta == 2)
+			{
+			<MudItem xs="12">
+				<MudCard>
+					<div class="row align-items-center p-3">
+						<div class="col-sm-12 col-lg-2">
+							<MudText Typo="Typo.button">Pregunta n°@pregunta.IdPregunta</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4">
+							<MudText>@pregunta.Pregunta1</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4 d-flex justify-content-center">
+							<MudRadioGroup  @bind-SelectedOption="rtaSimple2">
+								<MudRadio Disabled=deshabilitar Option="1" Color="Color.Info" Size="Size.Medium">Gana</MudRadio>
+								<MudRadio Disabled=deshabilitar Option="2" Color="Color.Dark" Size="Size.Medium">Empata</MudRadio>
+								<MudRadio Disabled=deshabilitar Option="3" Color="Color.Error" Size="Size.Medium">Pierde</MudRadio>
+							 </MudRadioGroup>
+						</div>
+						<div class="col-sm-12 col-lg-2 d-flex justify-content-center">
+							<MudText Typo="Typo.button">Puntos: @pregunta.Puntaje</MudText>
+						</div>
+					</div>
+				</MudCard>
+			</MudItem>
+			}
+			/* ¿Cual será el resultado de ARGENTINA ante Croacia? Puntaje: 8 */
+			@if(pregunta.IdPregunta == 3)
+			{
+			<MudItem xs="12">
+				<MudCard Class="">
+					<div class="row align-items-center p-3">
+						<div class="col-sm-12 col-lg-2">
+							<MudText Typo="Typo.button">Pregunta n°@pregunta.IdPregunta</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4">
+							<MudText>@pregunta.Pregunta1</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4 d-flex justify-content-center ">
+							<MudRadioGroup  @bind-SelectedOption="rtaSimple3" >
+								<MudRadio Disabled=deshabilitar Option="1" Color="Color.Info" Size="Size.Medium">Gana</MudRadio>
+								<MudRadio Disabled=deshabilitar Option="2" Color="Color.Dark" Size="Size.Medium">Empata</MudRadio>
+								<MudRadio Disabled=deshabilitar Option="3" Color="Color.Error" Size="Size.Medium">Pierde</MudRadio>
+							 </MudRadioGroup>
+						</div>
+						<div class="col-sm-12 col-lg-2">
+							<MudText Typo="Typo.button">Puntos: @pregunta.Puntaje</MudText>
+						</div>
+					</div>
+				</MudCard>
+			</MudItem>
+			} 
+			/*¿Cual será el resultado de ARGENTINA ante Nigeria? Puntaje: 8*/
+			@if(pregunta.IdPregunta == 4)
+			{
+			<MudItem xs="12">
+				<MudCard Class="">
+					<div class="row align-items-center p-3">
+						<div class="col-sm-12 col-lg-2">
+							<MudText Typo="Typo.button">Pregunta n°@pregunta.IdPregunta</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4">
+							<MudText>@pregunta.Pregunta1</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4 d-flex justify-content-center ">
+							<MudRadioGroup  @bind-SelectedOption="rtaSimple4">
+								<MudRadio Disabled=deshabilitar Option="1" Color="Color.Info" Size="Size.Medium">Gana</MudRadio>
+								<MudRadio Disabled=deshabilitar Option="2" Color="Color.Dark" Size="Size.Medium">Empata</MudRadio>
+								<MudRadio Disabled=deshabilitar Option="3" Color="Color.Error" Size="Size.Medium">Pierde</MudRadio>
+							 </MudRadioGroup>
+						</div>
+						<div class="col-sm-12 col-lg-2 d-flex justify-content-center">
+							<MudText Typo="Typo.button">Puntos: @pregunta.Puntaje</MudText>
+						</div>
+					</div>
+				</MudCard>
+			</MudItem>
+			}
+			/* ¿Qué equipo será el campeón de la copa? Puntaje: 20 */
+			@if(pregunta.IdPregunta == 5)
+			{
+			<MudItem xs="12">
+				<MudCard >
+					<div class="row align-items-center p-3">
+						<div class="col-sm-12 col-lg-2 mb-3">
+							<MudText Typo="Typo.button">Pregunta n°@pregunta.IdPregunta</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4 mb-3">
+							<MudText>@pregunta.Pregunta1</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4  mb-3 d-flex justify-content-center ">
+							 <MudSelect Disabled=deshabilitar @bind-Value="rtaSimple5" Margin="Margin.Dense" T="int" Label="Equipos" Variant="Variant.Outlined" IconSize="Size.Medium" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End">
+								<MudSelectItem Value="0">Elija un equipo...</MudSelectItem>
+								 @foreach (Equipo equipo in ListaEquipos)
+								{
+								 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+								}
+							</MudSelect>
+						</div>
+						<div class="col-sm-12 col-lg-2 d-flex justify-content-center">
+							<MudText Typo="Typo.button">Puntos: @pregunta.Puntaje</MudText>
+						</div>
+					</div>
+				</MudCard>
+			</MudItem>
+			} 
+			/* ¿Qué equipo será el segundo de la copa? Puntaje: 18*/
+			@if(pregunta.IdPregunta == 6)
+			{
+			<MudItem xs="12">
+				<MudCard>
+					<div class="row align-items-center p-3">
+						<div class="col-sm-12 col-lg-2 mb-3">
+							<MudText Typo="Typo.button">Pregunta n°@pregunta.IdPregunta</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4 mb-3">
+							<MudText>@pregunta.Pregunta1</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4 mb-3 d-flex justify-content-center ">
+							<MudSelect Disabled=deshabilitar @bind-Value="rtaSimple6" Margin="Margin.Dense" T="int" Label="Equipos" Variant="Variant.Outlined" IconSize="Size.Medium" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End">
+								<MudSelectItem Value="0">Elija un equipo...</MudSelectItem>
+							
+								@foreach (Equipo equipo in ListaEquipos)
+								{
+								 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+								}
+							</MudSelect>
+						</div>
+						<div class="col-sm-12 col-lg-2 d-flex justify-content-center">
+							<MudText Typo="Typo.button">Puntos: @pregunta.Puntaje</MudText>
+						</div>
+					</div>
+				</MudCard>
+			</MudItem>
+
+			}
+
+			/*  ¿Qué equipo será el tercero de la copa? Puntaje: 15*/
+			@if(pregunta.IdPregunta == 7)
+			{
+			<MudItem xs="12">
+				<MudCard>
+					<div class="row align-items-center p-3">
+						<div class="col-sm-12 mb-3 col-lg-2">
+							<MudText Typo="Typo.button">Pregunta n°@pregunta.IdPregunta</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4 mb-3">
+							<MudText>@pregunta.Pregunta1</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4 mb-3 d-flex justify-content-center ">
+							 <MudSelect Disabled=deshabilitar @bind-Value="rtaSimple7" Margin="Margin.Dense" T="int" Label="Equipos" Variant="Variant.Outlined" IconSize="Size.Medium" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End">
+								<MudSelectItem Value="0">Elija un equipo...</MudSelectItem>
+								@foreach (Equipo equipo in ListaEquipos)
+								{
+								 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+								}
+							</MudSelect>
+						</div>
+						<div class="col-sm-12 col-lg-2 d-flex justify-content-center">
+							<MudText Typo="Typo.button">Puntos: @pregunta.Puntaje</MudText>
+						</div>
+					</div>
+				</MudCard>
+			</MudItem>
+			}
+			/* ¿En que posición finalizará la Selección ARGENTINA? Puntaje: 15 */
+			@if(pregunta.IdPregunta == 8)
+			{
+			<MudItem xs="12">
+				<MudCard>
+					<div class="row align-items-center p-3">
+						<div class="col-sm-12 col-lg-2 mb-3">
+							<MudText Typo="Typo.button">Pregunta n°@pregunta.IdPregunta</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4 mb-3">
+							<MudText>@pregunta.Pregunta1</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4 mb-3 d-flex justify-content-center ">
+							 <MudNumericField Disabled=deshabilitar @bind-Value="rtaSimple8" T="int" Label="Posicion" Variant="Variant.Outlined" Adornment="Adornment.Start"  IconSize="Size.Medium" AdornmentIcon="fa-solid fa-ranking-star" Max="32"/>
+						</div>
+						<div class="col-sm-12 col-lg-2 d-flex justify-content-center">
+							<MudText Typo="Typo.button">Puntos: @pregunta.Puntaje</MudText>
+						</div>
+					</div>
+				
+				</MudCard>
+			</MudItem>
+			}
+			/* ¿Cuántos goles se convertirán en la primera fase? (TODOS los Equipos) Puntaje: 25 */
+			@if(pregunta.IdPregunta == 9)
+			{
+			<MudItem xs="12">
+				<MudCard >
+					<div class="row align-items-center p-3">
+						<div class="col-sm-12 col-lg-2 mb-3">
+							<MudText Typo="Typo.button">Pregunta n°@pregunta.IdPregunta</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4 mb-3">
+							<MudText>@pregunta.Pregunta1</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4 mb-3 d-flex justify-content-center ">
+							<MudNumericField Disabled=deshabilitar @bind-Value="rtaSimple9" T="int" Label="Posicion" Variant="Variant.Outlined" Adornment="Adornment.Start"  IconSize="Size.Medium" AdornmentIcon="fa-solid fa-ranking-star" Max="32"/>
+						</div>
+						<div class="col-sm-12 col-lg-2 d-flex justify-content-center">
+							<MudText Typo="Typo.button">Puntos: @pregunta.Puntaje</MudText>
+						</div>
+					</div>
+				</MudCard>
+			</MudItem>
+			}
+			/* ¿Cuántos goles se convertirán en toda la copa? (TODOS los Equipos) Puntaje: 25 */
+			@if(pregunta.IdPregunta == 10)
+			{
+			<MudItem xs="12">
+				<MudCard >
+					<div class="row align-items-center p-3">
+						<div class="col-sm-12 col-lg-2 mb-3">
+							<MudText Typo="Typo.button">Pregunta n°@pregunta.IdPregunta</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4 mb-3">
+							<MudText>@pregunta.Pregunta1</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4 mb-3 d-flex justify-content-center ">
+							<MudNumericField Disabled=deshabilitar @bind-Value="rtaSimple10" T="int" Label="Posicion" Variant="Variant.Outlined" Adornment="Adornment.Start"  IconSize="Size.Medium" AdornmentIcon="fa-solid fa-ranking-star"/>
+						</div>
+						<div class="col-sm-12 col-lg-2 d-flex justify-content-center">
+							<MudText Typo="Typo.button">Puntos: @pregunta.Puntaje</MudText>
+						</div>
+					</div>
+				</MudCard>
+			</MudItem>
+
+			}
+			/* ¿Qué jugador será el goleador de la Selección ARGENTINA? Puntaje: 12 */
+			@if(pregunta.IdPregunta ==11)
+			{
+			<MudItem xs="12">
+				<MudCard>
+					<div class="row align-items-center p-3">
+						<div class="col-sm-12 col-lg-2 mb-3">
+							<MudText Typo="Typo.button">Pregunta n°@pregunta.IdPregunta</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4 mb-3" >
+							<MudText>@pregunta.Pregunta1</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4 mb-3 d-flex justify-content-center ">
+							<MudSelect Disabled=deshabilitar @bind-Value="rtaCompuesta11" Margin="Margin.Dense" T="int" Label="Elegir Jugador" Variant="Variant.Outlined" IconSize="Size.Medium" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Info">
+								<MudSelectItem Value="0">Elija un jugador...</MudSelectItem>
+								@foreach (Jugador jugador in ListaJugadores)
+								{
+								<MudSelectItem Value="@jugador.IdJugador"> @jugador.Nombre (@jugador.Puesto) </MudSelectItem>
+								}
+							</MudSelect>
+						</div>
+						<div class="col-sm-12 col-lg-2 d-flex justify-content-center">
+							<MudText Typo="Typo.button">Puntos: @pregunta.Puntaje</MudText>
+						</div>
+					</div>
+				</MudCard>
+			</MudItem>
+			}
+			/* ¿Cuál será el equipo del goleador de la copa? Puntaje: 12 */
+			@if(pregunta.IdPregunta == 12)
+			{
+			<MudItem xs="12">
+				<MudCard>
+					<div class="row align-items-center p-3">
+						<div class="col-sm-12 col-lg-2 mb-3">
+							<MudText Typo="Typo.button">Pregunta n°@pregunta.IdPregunta</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4 mb-3">
+							<MudText>@pregunta.Pregunta1</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4 mb-3 d-flex justify-content-center ">
+							 <MudSelect Disabled=deshabilitar @bind-Value="rtaCompuesta12" Margin="Margin.Dense" T="int" Label="Equipos" Variant="Variant.Outlined" IconSize="Size.Medium" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End">
+								<MudSelectItem Value="0">Elija un equipo...</MudSelectItem>
+								@foreach (Equipo equipo in ListaEquipos)
+								{
+								 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+								}
+							</MudSelect>
+						</div>
+						<div class="col-sm-12 col-lg-2 d-flex justify-content-center">
+							<MudText Typo="Typo.button">Puntos: @pregunta.Puntaje</MudText>
+						</div>
+					</div>
+				</MudCard>
+			</MudItem>
+			}
+			/* ¿Cuál será la Selección más goleadora? Puntaje: 12 */
+			@if(pregunta.IdPregunta == 13)
+			{
+			<MudItem xs="12">
+				<MudCard>
+					<div class="row align-items-center p-3">
+						<div class="col-sm-12 col-lg-2 mb-3">
+							<MudText Typo="Typo.button">Pregunta n°@pregunta.IdPregunta</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4 mb-3">
+							<MudText>@pregunta.Pregunta1</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4 mb-3 d-flex justify-content-center ">
+							 <MudSelect Disabled=deshabilitar @bind-Value="rtaCompuesta13" Margin="Margin.Dense" T="int" Label="Equipos" Variant="Variant.Outlined" IconSize="Size.Medium" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End">
+								<MudSelectItem Value="0">Elija un equipo...</MudSelectItem>
+								@foreach (Equipo equipo in ListaEquipos)
+								{
+								 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+								}
+							</MudSelect>
+						</div>
+						<div class="col-sm-12 col-lg-2 d-flex justify-content-center">
+							<MudText Typo="Typo.button">Puntos: @pregunta.Puntaje</MudText>
+						</div>
+					</div>
+				</MudCard>
+			</MudItem>
+			}
+			/* ¿Cuál será la Selección que recibirá más goles? Puntaje: 12*/
+			@if(pregunta.IdPregunta == 14)
+			{
+			<MudItem xs="12">
+				<MudCard>
+					<div class="row align-items-center p-3">
+						<div class="col-sm-12 col-lg-2 mb-3">
+							<MudText Typo="Typo.button">Pregunta n°@pregunta.IdPregunta</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4 mb-3">
+							<MudText>@pregunta.Pregunta1</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4 mb-3 d-flex justify-content-center ">
+							 <MudSelect Disabled=deshabilitar @bind-Value="rtaCompuesta14" Margin="Margin.Dense" T="int" Label="Equipos" Variant="Variant.Outlined" IconSize="Size.Medium" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End">
+								<MudSelectItem Value="0">Elija un equipo...</MudSelectItem>
+								@foreach (Equipo equipo in ListaEquipos)
+								{
+								 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+								}
+							</MudSelect>
+						</div>
+						<div class="col-sm-12 col-lg-2 d-flex justify-content-center">
+							<MudText Typo="Typo.button">Puntos: @pregunta.Puntaje</MudText>
+						</div>
+					</div>
+				</MudCard>
+			</MudItem>
+			}
+
+			/* PREGUNTA COMPUESTA, ARMA LISTA DE JUGADORES A ELECCION */
+			@if(pregunta.IdPregunta == 15)
+			{
+			<MudItem xs="12">
+				<MudCard>
+					<div class="row justify-content-between p-3">
+						<div class="col-sm-2 col-lg-2 mb-3 ">	
+							<MudText Typo="Typo.button">Pregunta n°@pregunta.IdPregunta</MudText>
+						</div>
+					</div>
+					<div class="row ">
+						<div class="col-lg-12 m-3">
+							<MudText>@pregunta.Pregunta1</MudText>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-6 col-sm-12">
+							<MudSelect Disabled=deshabilitar Margin="Margin.Dense" T="int" Label="Equipos"  Placeholder="Elija Equipo"  Variant="Variant.Outlined" IconSize="Size.Medium" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" SelectedValuesChanged="@(async ()=> await CargaListaJugadoresXEquipo(equipoElegido))" @bind-Value="equipoElegido">
+								<MudSelectItem Value="0">Elija un equipo...</MudSelectItem>
+								@foreach (Equipo equipo in ListaEquipos)
+								{
+								 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+								}
+							</MudSelect>
+						</div>
+
+						<div class="col-lg-6 col-sm-12 mb-3">
+							<MudSelect Disabled=deshabilitar Margin="Margin.Dense" T="Jugador" Label="Jugadores" LockScroll=true Placeholder="Elija Jugador" Strict=true Variant="Variant.Outlined" IconSize="Size.Medium" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Info" Adornment="Adornment.End" SelectedValuesChanged="@(async ()=> await CargarJugadorAEquipoIdeal(jugadorElegido))" @bind-Value="jugadorElegido" >
+								<MudSelectItem Value="@jugadorElegido">Elija un jugador...</MudSelectItem>
+								@foreach (Jugador jugador in listaJugadoresxEquipo)
+								{
+								 <MudSelectItem Value="@jugador">@jugador.Nombre (@jugador.Puesto)</MudSelectItem>
+								}
+							</MudSelect>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 col-lg-6 mb-3 d-flex justify-content-around">
+							<MudTable Items="@listaEquipoIdeal" Hover="true" Breakpoint="Breakpoint.Sm" @ref="mudTable"  T="JugadorItem">
+								<HeaderContent>
+									<MudTh>Nombre</MudTh>
+									<MudTh>Equipo</MudTh>
+									<MudTh>Posicion</MudTh>
+									<MudTh>Eliminar</MudTh>
+								</HeaderContent>
+								<RowTemplate>
+									<MudTd DataLabel="Nombre">@context.Nombre</MudTd>
+									<MudTd DataLabel="Equipo">@context.NombreEquipo</MudTd>
+									<MudTd DataLabel="Posicion">@context.Puesto</MudTd>
+									<MudTd DataLabel="Eliminar"><MudIconButton Color="Color.Error" Size="Size.Small" Icon="fa-solid fa-trash-can" @onclick="(async ()=> await EliminarJugador(context.IdJugador))"></MudIconButton></MudTd>
+								</RowTemplate>
+							</MudTable>
+						</div>
+						<div class="col-sm-12 col-lg-6 mb-3 imagen">
+							<img src="/images/TablaDePUntos.png" />
+						</div>
+					</div>
+				</MudCard>
+			</MudItem>
+			}
+			/* ¿Qué jugador argentino convertirá el primer gol a favor de ARGENTINA? Puntaje: 8 */
+			@if(pregunta.IdPregunta ==19)
+			{
+			<MudItem xs="12">
+				<MudCard>
+					<div class="row align-items-center p-3">
+						<div class="col-sm-12 col-lg-2">
+							<MudText Typo="Typo.button">Pregunta n°@pregunta.IdPregunta</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4 mb-3">
+							<MudText>@pregunta.Pregunta1</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4 d-flex justify-content-center mb-3 ">
+							 <MudSelect Disabled=deshabilitar @bind-Value="rtaSimple19"  Margin="Margin.Dense" T="int" Label="Equipos" Variant="Variant.Outlined" IconSize="Size.Medium" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End">
+								<MudSelectItem Value="0">Elija un equipo...</MudSelectItem>
+								@foreach (Equipo equipo in ListaEquipos)
+								{
+								 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+								}
+							</MudSelect>
+						</div>
+						<div class="col-sm-12 col-lg-2 d-flex justify-content-center">
+							<MudText Typo="Typo.button">Puntos: @pregunta.Puntaje</MudText>
+						</div>
+					</div>
+				</MudCard>
+			</MudItem>
+			}
+			/* ¿En que tiempo se convertirá el primer gol de ARGENTINA? Puntaje: 5*/
+			@if(pregunta.IdPregunta ==20)
+			{
+			<MudItem xs="12">
+				<MudCard >
+					<div class="row align-items-center p-3">
+						<div class="col-sm-12 col-lg-2">
+							<MudText Typo="Typo.button">Pregunta n°@pregunta.IdPregunta</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4">
+							<MudText>@pregunta.Pregunta1</MudText>
+						</div>
+						<div class="col-sm-12 col-lg-4 d-flex justify-content-center ">
+							<MudRadioGroup @bind-SelectedOption="rtaSimple20">
+								<MudRadio Disabled=deshabilitar Option="1" Color="Color.Info" Size="Size.Medium">Primer tiempo</MudRadio>
+								<MudRadio Disabled=deshabilitar Option="2" Color="Color.Dark" Size="Size.Medium">Segundo tiempo</MudRadio>
+							 </MudRadioGroup>
+						</div>
+						<div class="col-sm-12 col-lg-2 d-flex justify-content-center">
+							<MudText Typo="Typo.button">Puntos: @pregunta.Puntaje</MudText>
+						</div>
+					</div>
+				</MudCard>
+			</MudItem>
+			}
+			/* ¿Cuál será el técnico ARGENTINO que llegue más lejos en la clasificación de la Copa? 15 Puntos*/
+			@if(pregunta.IdPregunta ==21)
+			{
+			<MudItem xs="12">
+				<MudCard >
+					<div class="row justify-content-between p-3">
+						<div class="col-sm-2 col-lg-2 ">	
+							<MudText Typo="Typo.button">Pregunta n°@pregunta.IdPregunta</MudText>
+						</div>
+						<div class="col-sm-2 col-lg-2 ">	
+							<MudText Typo="Typo.button">Puntos: @pregunta.Puntaje</MudText>
+						</div>
+					</div>
+					<div class="row ">
+						<div class="col-lg-12 m-3">
+							<MudText>@pregunta.Pregunta1</MudText>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12 col-sm-12 d-flex justify-content-center m-3">
+								<MudRadioGroup @bind-SelectedOption="rtaCompuesta21">
+								<MudRadio Disabled=deshabilitar Option="1" Color="Color.Info" Size="Size.Medium">Lionel Scaloni (Argentina)</MudRadio>
+								<MudRadio Disabled=deshabilitar Option="2" Color="Color.Dark" Size="Size.Medium">Gustavo Alfaro (Ecuador)</MudRadio>
+								<MudRadio Disabled=deshabilitar Option="3" Color="Color.Dark" Size="Size.Medium">Gerardo Martino (México)</MudRadio>
+							 </MudRadioGroup>
+						</div>
+					</div>
+				</MudCard>
+			</MudItem>
+
+			}
+
+			/*¿Cuál será la formación inicial de la Selección ARGENTINA en su primer partido?*/
+			@if(pregunta.IdPregunta ==22)
+			{
+				<MudItem xs="12">
+				<MudCard>
+					<div class="row justify-content-between p-3">
+						<div class="col-sm-2 col-lg-2 ">	
+							<MudText Typo="Typo.button">Pregunta n°@pregunta.IdPregunta</MudText>
+						</div>
+						<div class="col-sm-2 col-lg-2 ">	
+							<MudText Typo="Typo.button">Puntos: @pregunta.Puntaje</MudText>
+						</div>
+					</div>
+					<div class="row ">
+						<div class="col-lg-12 m-3">
+							<MudText>@pregunta.Pregunta1</MudText>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12 col-sm-12 d-flex justify-content-center m-3">
+							@if(deshabilitar)
+							{
+							 <MudButton Variant="Variant.Filled" FullWidth=true ButtonType="ButtonType.Button" @onclick="@(async ()=> await GoToFormacionViewAsync())" Style="background-color:sandybrown; color:white;" >Modifica tu formacion </MudButton>
+							}else
+							{
+							 <MudButton Variant="Variant.Filled" FullWidth=true ButtonType="ButtonType.Button" @onclick="@(async ()=> await GoToFormacionViewAsync())" Color="Color.Info">Arma tu formacion inicial</MudButton>
+							}
+						</div>
+					</div>
+				</MudCard>
+			</MudItem>
+			}
+
+
+			/////--------------------------------------------------------------------------------------------------------------------
+			/*  Seleccione de cada grupo los dos equipos que pasaran a Cuartos de final. Puntaje: 10 por cada grupo correcto*/
+			@if(pregunta.IdPregunta ==23)
+			{
+				<MudItem xs="12">
+				<MudCard>
+					<MudCardHeader>
+						<CardHeaderContent>
+							<MudText Typo="Typo.h6">Pregunta n° @pregunta.IdPregunta</MudText>
+						</CardHeaderContent>
+					</MudCardHeader>
+					<MudCardContent>
+						<MudText>Seleccione de cada grupo los dos equipos que pasaran a Cuartos de final. Puntaje: 10 por cada grupo correcto</MudText>
+					</MudCardContent>
+					<MudCardActions>
+						<MudGrid>
+						@foreach (var grupo in EquiposAgrupados)
+						{
+							@if(grupo.Key == "A")
+							{
+							<MudItem lg="3">
+								<MudCard>
+									<MudCardHeader>
+										<CardHeaderAvatar>
+											<MudAvatar Color="Color.Info">@grupo.Key</MudAvatar>
+										</CardHeaderAvatar>
+										<CardHeaderContent>
+											<MudText Typo="Typo.button">Grupo @grupo.Key</MudText>
+										</CardHeaderContent>
+									</MudCardHeader>
+									<MudDivider/>
+									<MudCardContent>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/senegal.png"/>
+												</div>
+												<div class="col-7">
+														<MudCheckBox Disabled=deshabilitar Checked="chkSenegal" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(1, grupo.Key, 1))">Senegal</MudCheckBox>
+												</div>
+											</div>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/paisesBajos.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkPaisesBajos" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(2, grupo.Key, 2))" >Paises Bajos</MudCheckBox>
+												</div>
+											</div>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/qatar.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkQatar" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(3, grupo.Key, 3))" >Qatar</MudCheckBox>
+												</div>
+											</div>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/ecuador.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkEcuador" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(4, grupo.Key, 4))" >Ecuador</MudCheckBox>
+												</div>
+											</div>
+									</MudCardContent>
+								</MudCard>
+							</MudItem>
+							}
+
+							@if(grupo.Key == "B")
+							{
+							<MudItem lg="3">
+									<MudCard>
+										<MudCardHeader>
+											<CardHeaderAvatar>
+												<MudAvatar Color="Color.Info">@grupo.Key</MudAvatar>
+											</CardHeaderAvatar>
+											<CardHeaderContent>
+												<MudText Typo="Typo.button">Grupo @grupo.Key</MudText>
+											</CardHeaderContent>
+										</MudCardHeader>
+										<MudDivider/>
+												<MudCardContent>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/inglaterra.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkING" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(5, grupo.Key, 1))" >Inglaterra</MudCheckBox>
+												</div>
+											</div>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/iran.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkIran" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(6, grupo.Key, 2))" >Iran</MudCheckBox>
+												</div>
+											</div>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/eeuu.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkEEUU" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(7, grupo.Key, 3))" >Estados Unidos</MudCheckBox>
+												</div>
+											</div>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/jjoo.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkGles" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(8, grupo.Key, 4))" >Gales</MudCheckBox>
+												</div>
+											</div>
+												</MudCardContent>
+									</MudCard>
+							</MudItem>
+							}
+							@if(grupo.Key == "C")
+							{
+							<MudItem lg="3">
+								<MudCard>
+									<MudCardHeader>
+										<CardHeaderAvatar>
+											<MudAvatar Color="Color.Info">@grupo.Key</MudAvatar>
+										</CardHeaderAvatar>
+										<CardHeaderContent>
+											<MudText Typo="Typo.button">Grupo @grupo.Key</MudText>
+										</CardHeaderContent>
+									</MudCardHeader>
+									<MudDivider/>
+										<MudCardContent>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/argentina.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkARG" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(9, grupo.Key, 1))" >Argentina</MudCheckBox>
+												</div>
+											</div>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/arabiaSaudita.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkASaudita" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(10, grupo.Key, 2))" >Arabia Saudita</MudCheckBox>
+												</div>
+											</div>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/mexico.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkMEX" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(11, grupo.Key, 3))" >Mexico</MudCheckBox>
+												</div>
+											</div>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/polonia.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkPOL" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(12, grupo.Key, 4))" >Polonia</MudCheckBox>
+												</div>
+											</div>
+										</MudCardContent>
+								</MudCard>
+							</MudItem>
+							}
+							@if(grupo.Key == "D")
+							{
+							<MudItem lg="3">
+								
+									<MudCard>
+										<MudCardHeader>
+											<CardHeaderAvatar>
+												<MudAvatar Color="Color.Info">@grupo.Key</MudAvatar>
+											</CardHeaderAvatar>
+											<CardHeaderContent>
+												<MudText Typo="Typo.button">Grupo @grupo.Key</MudText>
+											</CardHeaderContent>
+										</MudCardHeader>
+										<MudDivider/>
+												<MudCardContent>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/dinamarca.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkDINA" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(13, grupo.Key, 1))" >Dinamarca</MudCheckBox>
+												</div>
+											</div>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/tunez.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkTNZ" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(14, grupo.Key, 2))" >Tunez</MudCheckBox>
+												</div>
+											</div>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/jjoo.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkAUSTRALIA" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(15, grupo.Key, 3))" >Australia</MudCheckBox>
+												</div>
+											</div>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/francia.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkFRA" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(16, grupo.Key, 4))" >Francia</MudCheckBox>
+												</div>
+											</div>
+												</MudCardContent>
+									</MudCard>
+							</MudItem>
+							}
+							@if(grupo.Key == "E")
+							{
+							<MudItem lg="3">
+								<MudCard>
+									<MudCardHeader>
+										<CardHeaderAvatar>
+											<MudAvatar Color="Color.Info">@grupo.Key</MudAvatar>
+										</CardHeaderAvatar>
+										<CardHeaderContent>
+											<MudText Typo="Typo.button">Grupo @grupo.Key</MudText>
+										</CardHeaderContent>
+									</MudCardHeader>
+									<MudDivider/>
+									<MudCardContent>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/alemania.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkALM" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(17, grupo.Key, 1))" >Alemania</MudCheckBox>
+												</div>
+											</div>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/japon.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkJPN" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(18, grupo.Key, 2))" >Japon</MudCheckBox>
+												</div>
+											</div>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/espana.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkESP" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(19, grupo.Key, 3))" >España</MudCheckBox>
+												</div>
+											</div>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/jjoo.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkCRica" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(20, grupo.Key, 4))" >Costa Rica</MudCheckBox>
+												</div>
+											</div>
+									</MudCardContent>
+								</MudCard>
+							</MudItem>
+							}
+							@if(grupo.Key == "F")
+							{
+							<MudItem lg="3">
+								
+								<MudCard>
+									<MudCardHeader>
+										<CardHeaderAvatar>
+											<MudAvatar Color="Color.Info">@grupo.Key</MudAvatar>
+										</CardHeaderAvatar>
+										<CardHeaderContent>
+											<MudText Typo="Typo.button">Grupo @grupo.Key</MudText>
+										</CardHeaderContent>
+									</MudCardHeader>
+									<MudDivider/>
+									<MudCardContent>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/marruecos.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkMarruecos" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(21, grupo.Key, 1))" >Marruecos</MudCheckBox>
+												</div>
+											</div>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/croacia.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkCRO" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(22, grupo.Key, 2))" >Croacia</MudCheckBox>
+												</div>
+											</div>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/belgica.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkBEL" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(23, grupo.Key, 3))" >Belgica</MudCheckBox>
+												</div>
+											</div>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/canada.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkCND" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(24, grupo.Key, 4))" >Canada</MudCheckBox>
+												</div>
+											</div>
+									</MudCardContent>
+								</MudCard>
+							</MudItem>
+							}
+							@if(grupo.Key == "G")
+							{
+							<MudItem lg="3">
+								
+								<MudCard>
+									<MudCardHeader>
+										<CardHeaderAvatar>
+											<MudAvatar Color="Color.Info">@grupo.Key</MudAvatar>
+										</CardHeaderAvatar>
+										<CardHeaderContent>
+											<MudText Typo="Typo.button">Grupo @grupo.Key</MudText>
+										</CardHeaderContent>
+									</MudCardHeader>
+									<MudDivider/>
+										<MudCardContent>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/suiza.png"/>
+												</div>
+												<div class="col-7">
+														<MudCheckBox Disabled=deshabilitar Checked="chkSZA" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(25, grupo.Key, 1))">Suiza</MudCheckBox>
+												</div>
+											</div>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/camerun.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkCMRU" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(26, grupo.Key, 2))" >Camerun</MudCheckBox>
+												</div>
+											</div>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/brasil.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkBRA" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(27, grupo.Key, 3))" >Brasil</MudCheckBox>
+												</div>
+											</div>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/serbia.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkSerbia" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(28, grupo.Key, 4))" >Serbia</MudCheckBox>
+												</div>
+											</div>
+										</MudCardContent>
+								</MudCard>
+							</MudItem>
+							}
+							@if(grupo.Key == "H")
+							{
+							<MudItem lg="3">
+								<MudCard>
+									<MudCardHeader>
+										<CardHeaderAvatar>
+											<MudAvatar Color="Color.Info">@grupo.Key</MudAvatar>
+										</CardHeaderAvatar>
+										<CardHeaderContent>
+											<MudText Typo="Typo.button">Grupo @grupo.Key</MudText>
+										</CardHeaderContent>
+									</MudCardHeader>
+									<MudDivider/>
+										<MudCardContent>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/uruguay.png"/>
+												</div>
+												<div class="col-7">
+														<MudCheckBox Disabled=deshabilitar Checked="chkURU" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(29, grupo.Key, 1))">Uruguay</MudCheckBox>
+												</div>
+											</div>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/coreaDelSur.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkCDS" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(30, grupo.Key, 2))" >Corea Del Sur</MudCheckBox>
+												</div>
+											</div>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/portugal.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkPOR" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@(async ()=> await GrabaRespuestasPreg23(31, grupo.Key, 3))" >Portugal</MudCheckBox>
+												</div>
+											</div>
+											<div class="row align-items-center" >
+												<div class="col-3">
+													<MudImage Src="../banderas/ghana.png"/>
+												</div>
+												<div class="col-7">
+													<MudCheckBox Disabled=deshabilitar Checked="chkGhana" T="bool" UnCheckedColor="Color.Default" Color="Color.Info" CheckedChanged="@( async ()=> await GrabaRespuestasPreg23(32, grupo.Key, 4))" >Ghana</MudCheckBox>
+												</div>
+											</div>
+										</MudCardContent>
+								</MudCard>
+							</MudItem>
+							}
+						}
+						</MudGrid>
+					</MudCardActions>
+				</MudCard>
+			</MudItem>
+			}
+			@if(pregunta.IdPregunta ==26)
+			{
+			<MudItem xs="12">
+				<MudCard>
+					<div class="row justify-content-between p-3">
+						<div class="col-sm-2 col-lg-2 ">	
+							<MudText Typo="Typo.button">Pregunta n°@pregunta.IdPregunta</MudText>
+						</div>
+						<div class="col-sm-2 col-lg-2 ">	
+							<MudText Typo="Typo.button">Puntos: @pregunta.Puntaje</MudText>
+						</div>
+					</div>
+					<div class="row ">
+						<div class="col-lg-12 m-3">
+							<MudText>Arme la grilla desde OCTAVOS hasta la FINAL.</MudText>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12 col-sm-12 d-flex justify-content-center m-3">
+							 @if(deshabilitar)
+							{
+							 <MudButton Variant="Variant.Filled" FullWidth=true ButtonType="ButtonType.Button" @onclick="@(async ()=> await GoToProdeViewAsync())" Style="background-color:sandybrown; color:white;" >Modifica la grilla </MudButton>
+							}else
+							{
+							 <MudButton Variant="Variant.Filled" FullWidth=true ButtonType="ButtonType.Button" @onclick="@(async ()=> await GoToProdeViewAsync())"  Color="Color.Info">Arma la grilla </MudButton>
+							}
+						</div>
+					</div>
+				</MudCard>
+			</MudItem>
+			}
+	}
+	@if(!deshabilitar)
+	{
+	<div class="floating-button ">
+		<MudFab Style="background-color : seagreen; color: white; font-size: medium;" IconSize="Size.Medium" Label="Grabar Respuestas" EndIcon="@Icons.Material.Filled.Save" OnClick="@( async()=> await SaveAndShowSnackbarAsync())"/>
+	</div>
+	}else
+	{
+	<div class="floating-button">
+		<MudFab @bind-value="@deshabilitar" Style="background-color : sandybrown; color: white; font-size: medium;" IconSize="Size.Medium" Label="Modificar" EndIcon="@Icons.Material.Filled.Edit" OnClick="(()=>deshabilitar = false)" />
+	</div>
+	}
+	</MudGrid>
+
+
+@code {
+
+	int rtaCompuesta1 = 0;
+	int rtaSimple2 = 0;
+	int rtaSimple3 = 0;
+	int rtaSimple4 = 0;
+	int rtaSimple5 = 0;
+	int rtaSimple6 = 0;
+	int rtaSimple7 = 0;
+	int rtaSimple8 = 0;
+	int rtaSimple9 = 0;
+	int rtaSimple10 = 0;
+	int rtaCompuesta11 = 0;
+	int rtaCompuesta12 = 0;
+	int rtaCompuesta13 =0;
+	int rtaCompuesta14 = 0;
+	int rtaSimple19 = 0;
+	int rtaSimple20 = 0;
+	int rtaCompuesta21 = 0;
+
+
+	bool chkSenegal = false;
+	bool chkPaisesBajos = false;
+	bool chkQatar = false;
+	bool chkEcuador = false;
+
+	bool chkING = false;
+	bool chkIran = false;
+	bool chkEEUU = false;
+	bool chkGles = false;
+
+	bool chkARG = false;
+	bool chkASaudita = false;
+	bool chkMEX = false;
+	bool chkPOL = false;
+
+	bool chkDINA = false;
+	bool chkTNZ = false;
+	bool chkFRA = false;
+	bool chkAUSTRALIA = false;
+
+	bool chkALM = false;
+	bool chkJPN = false;
+	bool chkESP = false;
+	bool chkCRica = false;
+	
+	bool chkMarruecos = false;
+	bool chkCRO = false;
+	bool chkBEL = false;
+	bool chkCND = false;
+	
+	bool chkSZA = false;
+	bool chkCMRU = false;
+	bool chkBRA = false;
+	bool chkSerbia = false;
+	
+	bool chkURU = false;
+	bool chkCDS = false;
+	bool chkPOR = false;
+	bool chkGhana = false;
+
+	///Pregunta 15
+
+	int equipoElegido = 0;
+	private MudTable<JugadorItem> mudTable;
+	Jugador jugadorElegido = new Jugador();
+	List<Jugador> listaJugadoresxEquipo= new List<Jugador>();
+	List<JugadorItem> listaEquipoIdeal= new List<JugadorItem>();
+
+
+}
+

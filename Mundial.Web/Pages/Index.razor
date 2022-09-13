@@ -1,0 +1,32 @@
+﻿@page "/Index"
+@using System.Security.Claims
+@using Mundial.Web.Auth
+@inject ISessionStorageService SessionStorage
+@inject NavigationManager Navegador;
+@attribute [Authorize]
+
+
+<div class="container-fluid">
+    <div class="card col-8">
+        <div class="card-body">
+            <h1>Concurso Mundial Qatar 2022</h1>
+            <h2>Supermercados Toledo S.A.</h2>
+        </div>
+    </div>
+</div>
+
+
+@code
+{
+    protected override async Task OnInitializedAsync()
+    {
+        ClaimsIdentity identity = new ClaimsFromToken().ClaimsUsuario(await SessionStorage.GetItemAsync<string>("TOKEN_KEY"));
+        Claim ClaimsUser = identity.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+        string idUser =String.IsNullOrEmpty(ClaimsUser.Value) == true ? String.Empty : ClaimsUser.Value;
+        if(idUser == String.Empty)
+        {
+            Navegador.NavigateTo("/");
+        }
+    }
+}
+

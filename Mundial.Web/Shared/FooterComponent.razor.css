@@ -1,0 +1,36 @@
+﻿body {
+
+}
+
+
+@media (max-width: 641px) {
+
+  .footer
+  {
+      display:none;
+  }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        margin: 0px;
+        background: radial-gradient(circle, rgba(96,3,18,1) 22%, rgba(158,23,56,1) 81%);
+    }
+}
+
+/*Si la pantalla esta en lo mas grande*/
+@media (min-width: 768px) {
+
+    .footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        margin: 0px;
+        background: radial-gradient(circle, rgba(96,3,18,1) 22%, rgba(158,23,56,1) 81%);
+    }
+
+
+}

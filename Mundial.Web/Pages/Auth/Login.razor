@@ -1,0 +1,85 @@
+﻿@page "/"
+@inject NavigationManager navegador;
+
+<div class="row" style="height: 100%; margin:0px;">
+
+	<div class="col-lg-7 col-md-7 left d-flex justify-content-center align-items-center">
+		<img class="imagen" src="images/Qatar2022.png" />
+	</div>
+	<div class="col-lg-5 col-md-5 col-sm-12 right">
+		@if (!esRegistro)
+		{
+			<EditForm Model="model" OnValidSubmit="@(()=>LoginUser())">
+				<MudCard Style="background-color: transparent; box-shadow:none !important; margin-top:11%; padding: 40px">
+					<MudCardHeader Class="justify-content-center" Style="padding:10%;">
+						<MudImage Src="images/toledoMundial.png" ObjectPosition="ObjectPosition.Center" />
+					</MudCardHeader>
+					<MudCardContent Class="align-items-center">
+					
+						<MudText Typo="Typo.subtitle1" Style="color:whitesmoke;">Usuario</MudText>
+						<MudTextField style="color: white;" Variant="Variant.Outlined" Margin="Margin.Dense" Class="mt-3" @bind-Value="@model.Nickname" For="@(() => model.Nickname)" />
+						<MudText Typo="Typo.subtitle1" Class="mt-3" Style="color:whitesmoke;">Contraseña</MudText>
+						<MudTextField style="color: white;" Variant="Variant.Outlined" Margin="Margin.Dense" @bind-Value="@model.Password" For="@(() => model.Password)" InputType="@PasswordInput" Adornment="Adornment.End" AdornmentIcon=@PasswordInputIcon AdornmentColor="Color.Dark" OnAdornmentClick="ButtonHideclick" />
+					
+				</MudCardContent>
+					<MudCardActions Class="justify-content-center" Style="margin-top: 3%;">
+						<div class="row" style="width:100%">
+							<div class="col-lg-6 col-sm-12 bottom-movil">
+								<MudButton ButtonType="ButtonType.Submit" Disabled="@_processing" OnClick="ProcessSomething" Variant="Variant.Filled" Color="Color.Info">
+									@if (_processing)
+									{
+										<MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+										<MudText Class="ms-2">Iniciando</MudText>
+									}
+									else
+									{
+										<MudText>Iniciar sesion</MudText>
+									}
+								</MudButton>
+							</div>
+							<div class="col-lg-6 col-sm-12 bottom-movil">
+								<MudButton ButtonType="ButtonType.Submit" OnClick="VistaRegistro" Variant="Variant.Filled" Style="background-color: darkkhaki; color: white;"> Registrarme </MudButton>
+							</div>
+						</div>
+					</MudCardActions>
+				</MudCard>
+			</EditForm>
+		}
+		else
+		{
+			<Mundial.Web.Pages.Views.Registro />
+		}
+		
+
+	</div>
+</div>
+
+@code {
+
+	bool isShow;
+	bool esRegistro = false;
+	InputType PasswordInput = InputType.Password;
+	string PasswordInputIcon = "fa-solid fa-eye";
+
+	void ButtonHideclick()
+	{
+	@if (isShow)
+		{
+			isShow = false;
+			PasswordInputIcon = "fa-solid fa-eye-slash";
+			PasswordInput = InputType.Password;
+		}
+		else
+		{
+			isShow = true;
+			PasswordInputIcon = "fa-solid fa-eye";
+			PasswordInput = InputType.Text;
+		}
+	}
+
+	void VistaRegistro()
+	{
+		esRegistro = true;
+	}
+
+}

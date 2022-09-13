@@ -1,0 +1,11 @@
+body[b-gpktd9g85e] {
+}
+
+.zoom[b-gpktd9g85e] {
+    /* Aumentamos la anchura y altura durante 2 segundos */
+    transition: transform .2s;
+}
+
+    .zoom:hover[b-gpktd9g85e] {
+        transform: scale(1.3);
+    }

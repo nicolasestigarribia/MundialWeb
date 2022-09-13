@@ -1,0 +1,17 @@
+﻿@using Microsoft.JSInterop
+
+<footer class="footer" id="footer">
+
+    <div class="row d-flex justify-content-center">
+        <MudText Typo="Typo.button" Align="Align.Center" Style="color: white"> Supermercados Toledo S.A. | 7600 Mar del Plata | Tel: 54.223.4998653 | Email: toledomundial@supertoledo.com</MudText>
+    </div>
+</footer>
+@code {
+
+    [Inject] IJSRuntime JS { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+         await JS.InvokeAsync<string>("FooterResized", DotNetObjectReference.Create(this));
+    }
+}

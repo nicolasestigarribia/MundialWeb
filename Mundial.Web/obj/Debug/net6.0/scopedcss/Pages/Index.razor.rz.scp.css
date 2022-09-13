@@ -1,0 +1,32 @@
+body[b-cij52v8trt] {
+}
+
+
+/* Si la pantalla esta en lo mas chico  */
+@media (max-width: 641px) {
+    .sizeMovil[b-cij52v8trt] {
+        display: flex;
+        justify-content: center;
+        margin-top : 15px;
+    }
+}
+
+
+/* Si la pantalla esta en lo mediano */
+@media (max-width: 768px) {
+
+   
+}
+
+/* Si la pantalla esta en lo mas grande  */
+@media (min-width: 768px) {
+
+    .sizeMovil[b-cij52v8trt] {
+        display: flex;
+        justify-content: end;
+        margin-top: 15px;
+    }
+
+}
+
+

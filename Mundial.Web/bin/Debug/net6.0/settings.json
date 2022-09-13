@@ -1,0 +1,49 @@
+{
+  "ConnectionString": {
+    "BdLog": "Data Source=Ares2016;Initial Catalog=Serilog;User ID=userSerilog;Password=userSerilog123;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+  },
+  "Serilog": {
+    "Using": [
+      "Serilog.Sinks.MSSqlServer",
+      "Serilog.Sinks.Email",
+      "TLogger"
+    ],
+    "WriteTo": [
+      {
+        "Name": "MSSqlServer",
+        "Args": {
+          "connectionString": "Data Source=Ares2016;Initial Catalog=Serilog;User ID=userSerilog;Password=userSerilog123;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False",
+          "sinkOptionsSection": {
+            "tableName": "LogEvents",
+            "autoCreateSqlTable": true
+          },
+          "restrictedToMinimumLevel": "Debug",
+          "columnOptionsSection": {
+            "removeStandardColumns": [ "MessageTemplate", "Properties" ],
+            "timeStamp": {
+              "columnName": "Timestamp",
+              "convertToUtc": false
+            },
+            "additionalColumns": [
+              {
+                "columnName": "IdPrograma",
+                "propertyName": "IdPrograma",
+                "dataType": "int"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "Enrich": [
+      "FromLogContext",
+      "WithMachineName"
+    ]
+  },
+  "SMTPConfig": {
+    "UserName": "logueos@supertoledo.com",
+    "Password": "Descabelladamente751",
+    "MailServer": "smtp.supertoledo.com"
+  }
+}
+

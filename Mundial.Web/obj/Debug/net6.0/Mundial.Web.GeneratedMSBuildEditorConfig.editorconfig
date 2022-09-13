@@ -1,0 +1,104 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Mundial.Web
+build_property.RootNamespace = Mundial.Web
+build_property.ProjectDir = C:\SVN\NET\Ejemplos\Mundial2022\Mundial.Web\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\SVN\NET\Ejemplos\Mundial2022\Mundial.Web
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/SVN/NET/Ejemplos/Mundial2022/Mundial.Web/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SVN/NET/Ejemplos/Mundial2022/Mundial.Web/Pages/Auth/Logout.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFxMb2dvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SVN/NET/Ejemplos/Mundial2022/Mundial.Web/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SVN/NET/Ejemplos/Mundial2022/Mundial.Web/Pages/Views/Equipos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlld3NcRXF1aXBvcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SVN/NET/Ejemplos/Mundial2022/Mundial.Web/Pages/Views/Estadios.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlld3NcRXN0YWRpb3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SVN/NET/Ejemplos/Mundial2022/Mundial.Web/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SVN/NET/Ejemplos/Mundial2022/Mundial.Web/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SVN/NET/Ejemplos/Mundial2022/Mundial.Web/Pages/Auth/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFxMb2dpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-n61a4so3kq
+
+[C:/SVN/NET/Ejemplos/Mundial2022/Mundial.Web/Pages/Views/Formaciones.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlld3NcRm9ybWFjaW9uZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-4b0va86ujp
+
+[C:/SVN/NET/Ejemplos/Mundial2022/Mundial.Web/Pages/Views/Jugadores.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlld3NcSnVnYWRvcmVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-gpktd9g85e
+
+[C:/SVN/NET/Ejemplos/Mundial2022/Mundial.Web/Pages/Views/Perfil.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlld3NcUGVyZmlsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-jaw21oyrjp
+
+[C:/SVN/NET/Ejemplos/Mundial2022/Mundial.Web/Pages/Views/Preguntas.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlld3NcUHJlZ3VudGFzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-2sms2h0tdh
+
+[C:/SVN/NET/Ejemplos/Mundial2022/Mundial.Web/Pages/Views/Prode.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlld3NcUHJvZGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-uffgjp99lx
+
+[C:/SVN/NET/Ejemplos/Mundial2022/Mundial.Web/Pages/Views/Ranking.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlld3NcUmFua2luZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-mka92olf93
+
+[C:/SVN/NET/Ejemplos/Mundial2022/Mundial.Web/Pages/Views/Registro.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlld3NcUmVnaXN0cm8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-rpph5d5j5l
+
+[C:/SVN/NET/Ejemplos/Mundial2022/Mundial.Web/Shared/FooterComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEZvb3RlckNvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-qsf8b3fed0
+
+[C:/SVN/NET/Ejemplos/Mundial2022/Mundial.Web/Shared/LoginLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXExvZ2luTGF5b3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-v2ud7jhabn
+
+[C:/SVN/NET/Ejemplos/Mundial2022/Mundial.Web/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-gwop1xvh07
+
+[C:/SVN/NET/Ejemplos/Mundial2022/Mundial.Web/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-9wf9otedbu
+
+[C:/SVN/NET/Ejemplos/Mundial2022/Mundial.Web/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SVN/NET/Ejemplos/Mundial2022/Mundial.Web/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SVN/NET/Ejemplos/Mundial2022/Mundial.Web/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

@@ -1,0 +1,35 @@
+﻿body {
+}
+
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.icon-floating {
+    background-color : mediumspringgreen;
+
+}
+
+/* Si la pantalla esta en lo mas chico  */
+@media (max-width: 641px) {
+    .imagen {
+        display: none;
+    }
+}
+
+
+/* Si la pantalla esta en lo mediano */
+@media (max-width: 768px) {
+    
+    .imagen {
+        width: 40%;
+    }
+}
+
+/* Si la pantalla esta en lo mas grande  */
+@media (min-width: 768px) {
+    
+}
+

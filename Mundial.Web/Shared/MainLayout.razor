@@ -1,0 +1,42 @@
+﻿@using Mundial.Web.Services
+@inherits LayoutComponentBase
+@inject NavigationManager Navegador;
+@inject ILoginService loginSerivice
+@inject ISessionStorageService sessionStorage;
+
+<MudThemeProvider/> 
+<MudDialogProvider/> 
+<MudSnackbarProvider/>
+
+<PageTitle>Toledo Mundial</PageTitle>
+
+<AuthorizeView>
+	<Authorized>
+ <div class="page ">
+	<div class="sidebar">
+		<NavMenu />
+	</div>
+	<main>
+		<div class="top-row px-4 ">
+			<img src="/images/logo_copa (4).png" alt="Logo Mundial" />
+			<img src="/images/logoQatar1.png" alt="Logo Mundial" />
+		</div>
+		<MudContainer>@Body</MudContainer>
+	</main>
+	<FooterComponent />
+</div>
+
+	</Authorized>
+	<NotAuthorized>
+			<Mundial.Web.Pages.Auth.Login />
+	</NotAuthorized>
+</AuthorizeView>
+
+@code{
+	string usuario = string.Empty;
+	protected override async Task OnInitializedAsync()
+	{
+		usuario = await sessionStorage.GetItemAsync<string>("NickName");
+	}
+
+}

@@ -1,0 +1,78 @@
+﻿body {
+
+}
+
+
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.icon-floating {
+    background-color: mediumspringgreen;
+}
+
+
+
+ /*Si la pantalla esta en lo mas chico*/  
+@media (max-width: 641px) {
+
+    .scroll {
+        max-width:636px;
+        overflow-x: auto;
+    }
+        .scroll .row {
+            max-width: 636px;
+        }
+
+    .item {
+        min-width: 117px;
+        max-width: 156px;
+    }
+
+
+    .imagen {
+        background-image: url('./images/cancha2.jpg');
+        background-repeat: no-repeat;
+        min-width: 636px;
+        min-height: 630px;
+    }
+}
+
+ /*Si la pantalla esta en lo mediano*/ 
+@media (max-width: 768px) {
+
+    .imagen {
+        background-image: url('./images/cancha2.jpg');
+        background-repeat: no-repeat;
+    }
+}
+
+ /*Si la pantalla esta en lo mas grande*/  
+@media (min-width: 768px) {
+
+    .imagen {
+        background-image: url('./images/cancha2.jpg');
+        background-repeat: no-repeat;
+        
+    }
+
+    .scroll {
+        max-width: 636px;
+        overflow-x: auto;
+    }
+
+        .scroll .row {
+            max-width: 630px;
+        }
+
+    .item {
+        min-width: 117px;
+    }
+
+
+
+}
+
+

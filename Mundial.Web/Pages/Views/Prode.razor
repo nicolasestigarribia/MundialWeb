@@ -1,0 +1,431 @@
+﻿@page "/Prode"
+@using Mundial.Entidades
+@inject ISnackbar Snackbar;
+@attribute [Authorize]
+
+<div class="row justify-content-center m-3">
+	<h3>Arma el Prode</h3>
+</div>
+
+<MudDivider Light="true" />
+<MudGrid Class="mt-5" >
+	<MudItem xs="2"> 
+		<MudText Typo="Typo.button" Align="Align.Center">Octavos</MudText>
+		<MudSelect Disabled="@Deshabilitar" @bind-Value="rtaGrupA1"  T="int" SelectedValuesChanged="@(()=> GrabaRespuesta(rtaGrupA1, 26))" Margin="Margin.Dense" Variant="Variant.Outlined"  Placeholder="Seleccione equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="@rtaGrupA1">1° GRUPO A</MudSelectItem>
+			@foreach (Equipo equipo in GrupoA)
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect>
+
+
+		<MudSelect Disabled=@Deshabilitar @bind-Value="rtaGrupB2" SelectedValuesChanged="@(()=> GrabaRespuesta(rtaGrupB2, 27))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" HelperText="Sabado 3/12/22, 12:00hs" Placeholder="Elija equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">2° GRUPO B</MudSelectItem>
+			@foreach (var equipo in GrupoB)
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect>
+	</MudItem>
+	<MudItem Class="d-flex justify-content-center" xs="8">  </MudItem>
+	<MudItem xs="2">
+		<MudText Typo="Typo.button" Align="Align.Center">Octavos</MudText>
+		 <MudSelect Disabled=@Deshabilitar @bind-Value="rtaGrupB1" SelectedValuesChanged="@(()=> GrabaRespuesta(rtaGrupB1, 130))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label=""  Placeholder="Elija equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">1° GRUPO B</MudSelectItem>
+			@foreach (var equipo in GrupoB)
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect>
+
+		<MudSelect Disabled=@Deshabilitar @bind-Value="rtaGrupA2" SelectedValuesChanged="@(()=> GrabaRespuesta(rtaGrupA2, 131))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" HelperText="Sabado 3/12/22, 16:00hs" Placeholder="Seleccione equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">2° GRUPO A</MudSelectItem>
+			@foreach (var equipo in GrupoA)
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect>
+		
+	</MudItem>
+</MudGrid>
+
+
+<MudGrid Style="margin:0px !important;">
+
+	<MudItem xs="2"></MudItem>
+	
+	<MudItem xs="2"> 
+		<MudText Typo="Typo.button" Align="Align.Center">Cuartos</MudText>
+		<MudSelect Disabled=@Deshabilitar @bind-Value="ganador1" SelectedValuesChanged="@(()=> GrabaRespuesta(ganador1, 138))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label=""  Placeholder="Elija equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">GANADOR 1</MudSelectItem>
+			@foreach (var equipo in GrupoA.Union(GrupoB))
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect>
+
+		<MudSelect Disabled=@Deshabilitar @bind-Value="ganador2" SelectedValuesChanged="@(()=> GrabaRespuesta(ganador2, 139))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" HelperText="Viernes 9/12/22, 16:00hs" Placeholder="Seleccione equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">GANADOR 2</MudSelectItem>
+			@foreach (var equipo in GrupoC.Union(GrupoD))
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect>
+	</MudItem>
+
+	<MudItem xs="2"></MudItem>
+	<MudItem xs="2"></MudItem>
+
+	<MudItem xs="2"> 
+		<MudText Typo="Typo.button" Align="Align.Center">Cuartos</MudText>
+		<MudSelect Disabled=@Deshabilitar T="int" @bind-Value="ganador3" SelectedValuesChanged="@(()=> GrabaRespuesta(ganador3, 140))" Margin="Margin.Dense" Variant="Variant.Outlined" Label=""  Placeholder="Elija equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">GANADOR 3</MudSelectItem>
+			@foreach (var equipo in GrupoB.Union(GrupoA))
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect>
+
+		<MudSelect Disabled=@Deshabilitar @bind-Value="ganador4" SelectedValuesChanged="@(()=> GrabaRespuesta(ganador4, 141))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" HelperText="Viernes 9/12/22, 12:00hs" Placeholder="Seleccione equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">GANADOR 4</MudSelectItem>
+			@foreach (var equipo in GrupoD.Union(GrupoC))
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect>
+	</MudItem>
+
+	<MudItem xs="2"></MudItem>
+
+</MudGrid>
+
+
+<MudGrid Style="margin:0px !important;">
+	<MudItem xs="2"> 
+		<MudSelect Disabled=@Deshabilitar @bind-Value="rtaGrupC1" SelectedValuesChanged="@(()=> GrabaRespuesta(rtaGrupC1, 28))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" Placeholder="Seleccione equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">1° GRUPO C</MudSelectItem>
+			@foreach (var equipo in GrupoC)
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect>
+
+		<MudSelect Disabled=@Deshabilitar @bind-Value="rtaGrupD2" SelectedValuesChanged="@(()=> GrabaRespuesta(rtaGrupD2, 29))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" HelperText="Lunes 5/12/22, 12:00hs" Placeholder="Elija equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">2° GRUPO D</MudSelectItem>
+			@foreach (var equipo in GrupoD)
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect>
+	</MudItem>
+	
+	<MudItem Class="d-flex justify-content-center" xs="8">  </MudItem>
+	
+	<MudItem xs="2"> 
+		<MudSelect Disabled=@Deshabilitar @bind-Value="rtaGrupD1" SelectedValuesChanged="@(()=> GrabaRespuesta(rtaGrupD1, 132))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" Placeholder="Seleccione equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">1° GRUPO D</MudSelectItem>
+			@foreach (var equipo in GrupoD)
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect>
+
+		<MudSelect Disabled=@Deshabilitar @bind-Value="rtaGrupC2" SelectedValuesChanged="@(()=> GrabaRespuesta(rtaGrupC2, 133))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" HelperText=" Lunes 5/12/22, 16:00hs" Placeholder="Elija equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">2° GRUPO C</MudSelectItem>
+			@foreach (var equipo in GrupoC)
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect>
+	</MudItem>
+</MudGrid>
+<MudDivider Light="true" />
+
+<MudGrid Style="margin:0px !important;">
+	
+	<MudItem xs="1"></MudItem>
+	<MudItem xs="2"></MudItem>
+	<MudItem xs="2">
+		<MudText Typo="Typo.button" Align="Align.Center">Semifinal 1</MudText>
+		<MudSelect Disabled=@Deshabilitar @bind-Value="semiFinal1" SelectedValuesChanged="@(()=> GrabaRespuesta(semiFinal1, 146))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" Placeholder="Seleccione equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">SEMIFINAL 1</MudSelectItem>
+			@foreach (var equipo in ListaSemiFinal1)
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect>
+
+		<MudSelect  Disabled=@Deshabilitar @bind-Value="semiFinal2" SelectedValuesChanged="@(()=> GrabaRespuesta(semiFinal2, 147))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" HelperText="Lunes 13/12/22, 16:00hs" Placeholder="Elija equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">SEMIFINAL 1</MudSelectItem>
+			@foreach (var equipo in ListaSemiFinal2)
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect>
+	</MudItem>
+	
+	<MudItem xs="2">
+	<MudText Typo="Typo.button" Align="Align.Center" Inline=true >Campeon</MudText>
+	<MudSelect Disabled=@Deshabilitar @bind-Value="campeon" SelectedValuesChanged="@(()=> GrabaRespuesta(campeon, 152))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" Placeholder="Seleccione equipo" AdornmentIcon="fa-solid fa-trophy" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">CAMPEON</MudSelectItem>
+			@foreach (var equipo in ListaEquipos)
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect>
+		<MudText Typo="Typo.button" Align="Align.Center" Inline=true >SubCampeon</MudText>
+		<MudSelect Disabled=@Deshabilitar @bind-Value="subCampeon" SelectedValuesChanged="@(()=> GrabaRespuesta(subCampeon, 153))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" HelperText="Domingo 18/12/22, 12:00hs" Placeholder="Elija equipo" AdornmentIcon="fa-solid fa-trophy" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">SUB-CAMPEON</MudSelectItem>
+			@foreach (var equipo in ListaEquipos)
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect>
+
+
+	</MudItem>
+	<MudItem xs="2"> 
+		<MudText Typo="Typo.button" Align="Align.Center" Inline=true >Semifinal 2</MudText>
+		<MudSelect Disabled=@Deshabilitar @bind-Value="semiFinal3" SelectedValuesChanged="@(()=> GrabaRespuesta(semiFinal3, 148))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" Placeholder="Seleccione equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">SEMIFINAL 2</MudSelectItem>
+			@foreach (var equipo in ListaSemiFinal1)
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect>
+		 
+		<MudSelect Disabled=@Deshabilitar @bind-Value="semiFinal4" SelectedValuesChanged="@(()=> GrabaRespuesta(semiFinal4, 149))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" HelperText="Miercoles 14/12/22, 16:00hs" Placeholder="Elija equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">SEMIFINAL 2</MudSelectItem>
+			@foreach (var equipo in ListaSemiFinal2)
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect>
+
+	</MudItem>
+	<MudItem xs="2"></MudItem>
+	<MudItem xs="1"></MudItem>
+
+</MudGrid>
+<MudDivider Light="true" />
+
+<MudGrid Style="margin:0px !important;">
+
+	<MudItem xs="2"> 
+		<MudSelect Disabled=@Deshabilitar @bind-Value="rtaGrupE1" SelectedValuesChanged="@(()=> GrabaRespuesta(rtaGrupE1, 126))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" Placeholder="Seleccione equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">1° GRUPO E</MudSelectItem>
+			@foreach (var equipo in GrupoE)
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect>
+
+		<MudSelect Disabled=@Deshabilitar @bind-Value="rtaGrupF2" SelectedValuesChanged="@(()=> GrabaRespuesta(rtaGrupF2, 127))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" HelperText="Domingo 4/12/22, 12:00hs" Placeholder="Elija equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">2° GRUPO F</MudSelectItem>
+			@foreach (var equipo in GrupoF)
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect> 
+	</MudItem>
+	
+	<MudItem Class="d-flex justify-content-center" xs="8"> 
+		<div class="col-3">
+			<MudText Typo="Typo.button" Align="Align.Center">Tercero</MudText>
+			<MudSelect  Disabled=@Deshabilitar @bind-Value="tercero" SelectedValuesChanged="@(()=> GrabaRespuesta(tercero, 150))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" Placeholder="Seleccione equipo" AdornmentIcon="fa-solid fa-trophy" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+				<MudSelectItem Value="0">TERCERO</MudSelectItem>
+				@foreach (var equipo in GrupoE.Union(GrupoF))
+				{
+				 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+				}
+			</MudSelect>
+			<MudText Typo="Typo.button" Align="Align.Center">Cuarto</MudText>
+			<MudSelect Disabled=@Deshabilitar @bind-Value="cuarto" SelectedValuesChanged="@(()=> GrabaRespuesta(cuarto, 151))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" HelperText="Sabado 17/12/22 12:00hs" Placeholder="Elija equipo" AdornmentIcon="fa-solid fa-trophy" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+				<MudSelectItem Value="0">CUARTO</MudSelectItem>
+				@foreach (var equipo in GrupoG.Union(GrupoH))
+				{
+				 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+				}
+			</MudSelect>
+		</div>
+	</MudItem>
+
+	<MudItem xs="2"> 
+		<MudSelect Disabled=@Deshabilitar @bind-Value="rtaGrupF1" SelectedValuesChanged="@(()=> GrabaRespuesta(rtaGrupF1, 134))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" Placeholder="Seleccione equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">1° GRUPO F</MudSelectItem>
+			@foreach (var equipo in GrupoF)
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect>
+
+		<MudSelect Disabled=@Deshabilitar  @bind-Value="rtaGrupE2" SelectedValuesChanged="@(()=> GrabaRespuesta(rtaGrupE2, 135))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" HelperText="Domingo 4/12/22, 16:00hs" Placeholder="Elija equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">2° GRUPO E</MudSelectItem>
+			@foreach (var equipo in GrupoE)
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect>
+	</MudItem>
+</MudGrid>
+
+
+<MudGrid Style="margin:0px !important;">
+	
+	<MudItem xs="2"></MudItem>
+	<MudItem xs="2">
+		<MudText Typo="Typo.button" Align="Align.Center">Cuartos</MudText>
+		<MudSelect Disabled=@Deshabilitar @bind-Value="ganador5" SelectedValuesChanged="@(()=> GrabaRespuesta(ganador5, 142))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" Placeholder="Seleccione equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">GANADOR 5</MudSelectItem>
+			@foreach (var equipo in GrupoE.Union(GrupoF))
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect>
+
+		<MudSelect Disabled=@Deshabilitar @bind-Value="ganador6" SelectedValuesChanged="@(()=> GrabaRespuesta(ganador6, 143))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" HelperText="Sabado 10/12/22, 16:00hs" Placeholder="Elija equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">GANADOR 6</MudSelectItem>
+			@foreach (var equipo in GrupoG.Union(GrupoH))
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect> 
+
+	</MudItem>
+	<MudItem xs="1"></MudItem>
+	<MudItem xs="2">
+		
+
+	</MudItem>
+	<MudItem xs="1"></MudItem>
+	<MudItem xs="2">
+		<MudText Typo="Typo.button" Align="Align.Center">Cuartos</MudText>
+		<MudSelect Disabled=@Deshabilitar @bind-Value="ganador7" SelectedValuesChanged="@(()=> GrabaRespuesta(ganador7, 144))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" Placeholder="Seleccione equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">GANADOR 7</MudSelectItem>
+			@foreach (var equipo in GrupoE.Union(GrupoF))
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect>
+
+		<MudSelect Disabled=@Deshabilitar @bind-Value="ganador8" SelectedValuesChanged="@(()=> GrabaRespuesta(ganador8, 145))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" HelperText="Sabado 10/12/22, 12:00hs" Placeholder="Elija equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">GANADOR 8</MudSelectItem>
+			@foreach (var equipo in GrupoG.Union(GrupoH))
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect> 
+
+	</MudItem>
+	<MudItem xs="2"></MudItem>
+
+</MudGrid>
+
+
+<MudGrid Style="margin:0px !important;">
+	<MudItem xs="2">
+		<MudSelect Disabled=@Deshabilitar @bind-Value="rtaGrupG1" SelectedValuesChanged="@(()=> GrabaRespuesta(rtaGrupG1, 128))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" Placeholder="Seleccione equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">1° GRUPO G</MudSelectItem>
+			@foreach (var equipo in GrupoG)
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect>
+
+		<MudSelect Disabled=@Deshabilitar @bind-Value="rtaGrupH2" SelectedValuesChanged="@(()=> GrabaRespuesta(rtaGrupH2, 129))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" HelperText="6/12/22, 12:00hs" Placeholder="Elija equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">2° GRUPO H</MudSelectItem>
+			@foreach (var equipo in GrupoH)
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect> 
+	</MudItem>
+	
+	<MudItem Class="d-flex justify-content-center" xs="8">  </MudItem>
+	
+	<MudItem xs="2"> 
+		<MudSelect Disabled=@Deshabilitar @bind-Value="rtaGrupH1" SelectedValuesChanged="@(()=> GrabaRespuesta(rtaGrupH1, 136))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" Placeholder="Seleccione equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">1° GRUPO H</MudSelectItem>
+			@foreach (var equipo in GrupoH)
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect>
+
+		<MudSelect Disabled=@Deshabilitar @bind-Value="rtaGrupG2" SelectedValuesChanged="@(()=> GrabaRespuesta(rtaGrupG2, 137))" T="int" Margin="Margin.Dense" Variant="Variant.Outlined" Label="" HelperText="6/12/22, 16:00hs" Placeholder="Elija equipo" AdornmentIcon="fa-solid fa-earth-americas" AdornmentColor="Color.Info" Adornment="Adornment.End" IconSize="Size.Small">
+			<MudSelectItem Value="0">2° GRUPO G</MudSelectItem>
+			@foreach (var equipo in GrupoG)
+			{
+			 <MudSelectItem Value="@equipo.IdEquipo"><img src="@equipo.Imagen" height="14" class="mr-1"/>@equipo.Nombre </MudSelectItem>
+			}
+		</MudSelect>
+	</MudItem>
+
+</MudGrid>
+<MudDivider Light="true" />
+
+	@if(!Deshabilitar)
+		{
+		<div class="floating-button">
+		<MudFab Style="background-color : seagreen; color: white; font-size: medium" IconSize="Size.Medium" Label="Grabar Respuestas" EndIcon="@Icons.Material.Filled.Save" OnClick="@( async()=> await Save())" />
+		</div>
+		}else
+		{
+		<div class="floating-button">
+			<MudFab Style="background-color : sandybrown; color: white; font-size: medium" IconSize="Size.Medium" Label="Modificar Respuestas" EndIcon="@Icons.Material.Filled.Refresh" OnClick="CambiarFormacion"  />
+		</div>
+		}
+@code {
+		List<Equipo> GrupoA { set; get; } = new List<Equipo>();
+		List<Equipo> GrupoB { set; get; } = new List<Equipo>();
+		List<Equipo> GrupoC { set; get; } = new List<Equipo>();
+		List<Equipo> GrupoD { set; get; } = new List<Equipo>();
+		List<Equipo> GrupoE { set; get; } = new List<Equipo>();
+		List<Equipo> GrupoF { set; get; } = new List<Equipo>();
+		List<Equipo> GrupoG { set; get; } = new List<Equipo>();
+		List<Equipo> GrupoH { set; get; } = new List<Equipo>();
+
+		List<Equipo> ListaSemiFinal1 { set; get; } = new List<Equipo>();
+		List<Equipo> ListaSemiFinal2 { set; get; } = new List<Equipo>();
+		List<Equipo> ListaSemiFinal3 { set; get; } = new List<Equipo>();
+		List<Equipo> ListaSemiFinal4 { set; get; } = new List<Equipo>();
+
+
+		int rtaGrupA1;
+		int rtaGrupA2;
+		int rtaGrupB1;
+		int rtaGrupB2;
+		int rtaGrupC1;
+		int rtaGrupC2;
+		int rtaGrupD1;
+		int rtaGrupD2;
+		int rtaGrupE1;
+		int rtaGrupE2;
+		int rtaGrupF1;
+		int rtaGrupF2;
+		int rtaGrupG1;
+		int rtaGrupG2;
+		int rtaGrupH1;
+		int rtaGrupH2;
+
+		int ganador1;
+		int ganador2;
+		int ganador3;
+		int ganador4;
+		int ganador5;
+		int ganador6;
+		int ganador7;
+		int ganador8;
+
+		int semiFinal1;
+		int semiFinal2;
+		int semiFinal3;
+		int semiFinal4;
+
+		int tercero;
+		int cuarto;
+		int campeon;
+		int subCampeon;
+
+}

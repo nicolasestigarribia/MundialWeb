@@ -1,0 +1,48 @@
+﻿@page "/Equipos"
+@attribute [Authorize]
+
+<h3>Equipos</h3>
+<br />
+<br />
+
+@if (ListaEquipos != null)
+{
+    @foreach(var valor in EquiposAgrupados)
+    {
+        <h5>Grupo @valor.Key</h5>
+        <table class="table table-striped text-center table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Bandera</th>
+                    <th scope="col">Equipo</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Técnico</th>
+                    <th scope="col">Posicion</th>
+                    <th scope="col">Continente</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                @foreach(var equipo in valor.Value)
+                {
+                    <tr>
+                        <td>
+                            <img src="@equipo.Imagen" alt="Bandera del equipo"/>
+                        </td>
+                        <td>@equipo.IdEquipo </td>
+                        <td>@equipo.Nombre </td>
+                        <td>@equipo.Tecnico </td>
+                        <td>@equipo.Posicion </td>
+                        <td>@equipo.NombreContinente </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br /><br />
+    }
+}
+@code {
+
+    
+
+}

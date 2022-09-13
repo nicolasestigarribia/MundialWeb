@@ -1,0 +1,90 @@
+﻿@page "/Ranking"
+@attribute [Authorize]
+@inject ISnackbar Snackbar;
+@using Mundial.Entidades;
+
+
+<MudTable Class="mt-5 table-responsive" Hover="true" Striped="true" Items="@listaAMostrar" CustomHeader="true" Filter="new Func<RankingUsuarioItem,bool>(FilterFunc1)" @bind-SelectedItem="selecciconado">
+    <ToolBarContent >
+        <MudText Style="color: #711129; text-decoration: underline;" Typo="Typo.h5">RANKING</MudText>
+        <MudSpacer />
+        <MudTextField Style="border-color: #711129;" Variant="Variant.Outlined" @bind-Value="buscador" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh Style="background-color: #711129; color: white;">Posicion</MudTh>
+        <MudTh Style="background-color: #711129; color: white;">Foto</MudTh>
+        <MudTh Style="background-color: #711129; color: white;">Legajo / Cuit</MudTh>
+        <MudTh Style="background-color: #711129; color: white;">Nombre</MudTh>
+        <MudTh Style="background-color: #711129; color: white;">Usuario</MudTh>
+        <MudTh Style="background-color: #711129; color: white;">Empresa</MudTh>
+        <MudTh Style="background-color: #711129; color: white;">Aciertos</MudTh>
+        <MudTh Style="background-color: #711129; color: white;">Puntaje</MudTh>
+        <MudTh Style="background-color: #711129; color: white;">Fecha de grabacion</MudTh>
+
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Posicion">@context.Posicion</MudTd>
+        <MudTd>
+            @if(context.Persona.Imagen == null)
+            {
+                <MudImage Src="/images/perfil-usuario.png" Width="60" Height="60" Alt="Perfil" Elevation="25" Class="rounded-lg" />
+            }else
+            {
+                <MudImage Src="@($"data:image/*;base64, {Convert.ToBase64String(context.Persona.Imagen)}")" Width="60" Height="60" Alt="Perfil" Elevation="25" Class="rounded-lg" />
+            }
+        </MudTd>
+        @if (context.Persona.Legajo > 0)
+        {
+            <MudTd DataLabel="Legajo">@context.Persona.Legajo</MudTd>
+        }else
+        {
+            <MudTd DataLabel="Legajo">@context.Persona.Cuit</MudTd>
+        }
+        <MudTd DataLabel="Nombre">@context.Persona.Nombre @context.Persona.Apellido</MudTd>
+        <MudTd DataLabel="Nickname">@context.Usuario.NickName</MudTd>
+        <MudTd DataLabel="Nickname">@context.EmpresaNombre</MudTd>
+        <MudTd DataLabel="Aciertos">@context.CantidadDeAciertos</MudTd>
+        <MudTd DataLabel="Puntaje">@context.PuntajeTotal</MudTd>
+        <MudTd DataLabel="Fecha">@context.FechaGrabacion.ToLongDateString()</MudTd>
+    </RowTemplate>
+    <PagerContent >
+        <div  class="row mt-5 mb-5 d-flex justify-content-center align-items-center">
+            <div class="col-lg-2 col-md-6 col-sm-12 botonAnterior">
+                <MudButton style="background-color: #711129; color: white;" ButtonType="ButtonType.Button" OnClick="CambiaAPaginaAnterior"> Anterior</MudButton>
+            </div>
+
+            <button class="col-lg-1 col-md-4 col-sm-12 btn btn-outline-primary m-1 " style="border-color: #711129; color: #711129;" disabled><strong>@PaginaActual</strong></button>
+
+            <div class="col-lg-2 col-md-6 col-sm-12 botonSiguiente">
+                <MudButton style="background-color: #711129; color: white;" ButtonType="ButtonType.Button" OnClick="CambiaAPaginaSiguiente"> Siguiente</MudButton>
+            </div>
+        </div>
+    </PagerContent>
+</MudTable>
+
+@code {
+    public int PaginaActual { get; set; } = 1;
+
+
+    private bool FilterFunc1(RankingUsuarioItem user) => FilterFunc(user, buscador);
+
+
+    private bool FilterFunc(RankingUsuarioItem user, string searchString)
+    {
+        if (string.IsNullOrWhiteSpace(searchString))
+            return true;
+        if (user.Persona.Nombre.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+            return true;
+        if (user.Persona.Apellido.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+            return true;
+        if (user.Usuario.NickName.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+            return true;
+        if ($"{user.Persona.Legajo} {user.Persona.Cuit}".Contains(searchString))
+        return true;
+        
+
+        return false;
+    }
+
+
+}

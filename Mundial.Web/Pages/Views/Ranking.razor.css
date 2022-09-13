@@ -1,0 +1,42 @@
+﻿body {
+    margin : 0px;
+}
+
+.colorHeader {
+    background-color: #711129;
+    color: white;
+}
+
+
+/* Si la pantalla esta en lo mas chico  */
+@media (max-width: 641px) {
+   .botonAnterior{
+       display: flex;
+       justify-content: center;
+   }
+
+    .botonSiguiente {
+        display: flex;
+        justify-content: center;
+    }
+
+}
+
+
+/* Si la pantalla esta en lo mediano */
+@media (max-width: 768px) {
+
+    .imagen {
+        width: 40%;
+    }
+}
+
+/* Si la pantalla esta en lo mas grande  */
+@media (min-width: 768px) {
+    .botonSiguiente {
+        display: flex;
+        justify-content: end;
+    }
+}
+
+

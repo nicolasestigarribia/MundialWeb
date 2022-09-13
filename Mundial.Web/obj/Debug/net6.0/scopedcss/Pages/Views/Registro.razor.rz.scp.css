@@ -1,0 +1,51 @@
+body[b-rpph5d5j5l] {
+    margin: 0px;
+}
+
+
+/* Si la pantalla esta en lo mas chico  */
+@media (max-width: 641px) {
+
+    .margin-top-image[b-rpph5d5j5l] {
+        margin-top:0%;
+    }
+
+    .heigth-image[b-rpph5d5j5l] {
+        height:60%;
+        width: 60%;
+    }
+
+    .bottom-movil[b-rpph5d5j5l] {
+        display: flex;
+        justify-content: center;
+        margin: 10px;
+    }
+}
+
+
+/* Si la pantalla esta en lo mediano */
+@media (max-width: 768px) {
+ 
+
+    .bottom-movil[b-rpph5d5j5l] {
+        display: flex;
+        justify-content: center;
+        margin: 10px;
+    }
+}
+
+/* Si la pantalla esta en lo mas grande  */
+@media (min-width: 768px) {
+
+    .heigth-image[b-rpph5d5j5l] {
+        height: 60%;
+    }
+
+    .margin-top-image[b-rpph5d5j5l] {
+        margin-top: 5%;
+    }
+    .bottom-movil[b-rpph5d5j5l] {
+        display: flex;
+        justify-content: space-around;
+    }
+}

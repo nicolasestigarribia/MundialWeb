@@ -1,0 +1,348 @@
+﻿@page "/Formaciones"
+@using Mundial.Entidades
+@inject ISnackbar Snackbar;
+@attribute [Authorize]
+
+
+	<div class="row justify-content-between p-2">
+		<div class="col-sm-2 col-lg-2 ">	
+			<MudText Typo="Typo.h5">Pregunta n°@Pregunta.IdPregunta</MudText>
+		</div>
+		<div class="col-sm-2 col-lg-2 ">
+			<MudText Typo="Typo.h6">Puntos: @Pregunta.Puntaje</MudText>
+		</div>
+	</div>
+	<div class="row ">
+		<div class="col-lg-12 m-3">
+			<MudText Typo="Typo.h6">@Pregunta.Pregunta1</MudText>
+		</div>
+	</div>
+<MudDivider/>
+
+<div class="row mt-5" style="height: 631px;">
+	<div class="scroll col-lg-7" style="width: 636px;">
+		<div class="imagen">
+			@*ARQUERO*@
+			<div style="height: 159px;" class="row">
+				<div class="col-4 "></div>
+				<div  class="col-4  d-flex justify-content-center align-items-center">
+					<MudImage Src=@arquero.Imagen Height="75" Width="75" />
+				</div>
+			<div class="col-4 "></div>
+			</div>
+
+			@*DEFENSA*@
+			<div style="height: 159px;" class="row ">
+				@if(alineacion == 442 || alineacion == 433)
+				{
+				<div class="col-3 item d-flex align-items-center">
+					<MudImage  Src=@defensor1.Imagen  Height="75" Width="75" />
+				</div>
+				<div class="col-3 item">
+					<MudImage Src=@defensor2.Imagen  Height="75" Width="75" />
+				</div>
+				<div class="col-3 item">
+					<MudImage Src=@defensor3.Imagen  Height="75" Width="75" />
+
+				</div>
+					<div class="col-3 item d-flex align-items-center">
+						@if (defensor4 != null)
+						{
+						<MudImage Src=@defensor4.Imagen  Height="75" Width="75" />
+						}
+				</div>
+				}else
+				{
+				<div class="col-lg-2 item">
+
+				</div>
+				<div class="col-2 item d-flex align-items-center">
+					<MudImage  Src=@defensor1.Imagen  Height="75" Width="75" />
+				</div>
+				<div class="col-3 item d-flex justify-content-center">
+					<MudImage Src=@defensor2.Imagen  Height="75" Width="75" />
+				</div>
+				<div class="col-2 item d-flex align-items-center">
+					<MudImage Src=@defensor3.Imagen  Height="75" Width="75" />
+				</div>
+					<div class="col-lg-2 item">
+
+				</div>
+				}
+			</div>
+
+			@*VOLANTES*@
+			<div style="height: 159px;" class="row">
+
+				@if(alineacion == 343 || alineacion ==442)
+				{
+				<div class="col-3 item d-flex align-items-center">
+					<MudImage  Src=@volante1.Imagen  Height="75" Width="75" />
+				</div>
+				<div class="col-3 item">
+					<MudImage Src=@volante2.Imagen  Height="75" Width="75" />
+				</div>
+				<div class="col-3 item">
+					<MudImage Src=@volante3.Imagen  Height="75" Width="75" />
+
+				</div>
+					<div class="col-3 item d-flex align-items-center">
+						@if (volante4 != null)
+						{
+						<MudImage Src=@volante4.Imagen  Height="75" Width="75" />
+						}
+				</div>
+				}else
+				{
+				<div class="col-lg-2 item">
+
+				</div>
+				<div class="col-2 item d-flex align-items-center">
+					<MudImage  Src=@volante1.Imagen  Height="75" Width="75" />
+				</div>
+				<div class="col-3 item d-flex justify-content-center">
+					<MudImage Src=@volante2.Imagen  Height="75" Width="75" />
+				</div>
+				<div class="col-2 item d-flex align-items-center">
+					<MudImage Src=@volante3.Imagen  Height="75" Width="75" />
+				</div>
+				<div class="col-lg-2 item">
+
+				</div>
+				}
+
+			</div>
+			@*DELANTEROS*@
+			<div style="height: 159px;" class="row">
+				@if(alineacion == 442){
+				<div class="col-3 item">
+				</div>
+				<div class="col-3 item">
+					<MudImage Src=@delantero1.Imagen  Height="75" Width="75" />
+				</div>
+				<div class="col-3 item d-flex justify-content-end">
+					<MudImage Src=@Delantero2.Imagen  Height="75" Width="75" />
+				</div>
+				<div class="col-3 item">
+				</div>
+				}else
+				{
+				<div class="col-lg-2 item">
+
+				</div>
+				<div class="col-2 item d-flex align-items-center">
+					<MudImage  Src=@delantero1.Imagen  Height="75" Width="75" />
+				</div>
+				<div class="col-3 item d-flex justify-content-center">
+					<MudImage Src=@Delantero2.Imagen  Height="75" Width="75" />
+				</div>
+				<div class="col-2 item d-flex align-items-center">
+					<MudImage Src=@Delantero3.Imagen  Height="75" Width="75" />
+				</div>
+					<div class="col-lg-2 item">
+
+				</div>
+				}
+			</div>
+		</div>
+	</div>
+
+
+	<div style="height: 631px;" class="col-lg-5 col-md-12 col-sm-12 m-0">
+		<div style="height: 157px;" class="row"></div>
+		<div class="row d-flex justify-content-center mb-5">
+			<MudPaper Class="col-sm-12">
+				<div class="d-flex justify-content-center colorMundial">
+					<MudText Style="color: whitesmoke" GutterBottom=true Typo="Typo.button"> Alineacion</MudText>
+				</div>
+				<div class="row d-flex justify-content-center">
+					<MudRadioGroup class="m-2 d-flex justify-content-center" @bind-SelectedOption="alineacion" T="int" >
+						<MudRadio Disabled=Deshabilitar Option="442" Color="Color.Primary" Size="Size.Medium" @onchange="CambioAlineacion"  >4 - 4 - 2</MudRadio>
+						<MudRadio Disabled=Deshabilitar Option="433" Color="Color.Primary" Size="Size.Medium" @onchange="CambioAlineacion"  >4 - 3 - 3</MudRadio>
+						<MudRadio Disabled=Deshabilitar Option="343" Color="Color.Primary" Size="Size.Medium" @onchange="CambioAlineacion"  >3 - 4 - 3</MudRadio>
+					</MudRadioGroup>
+				</div>
+				
+			</MudPaper>
+		</div>
+
+		<div class="row mt-5">
+			<MudTabs Class="col-12" Elevation="2" ApplyEffectsToContainer="true" Rounded="true" AlwaysShowScrollButtons="true" PanelClass="pa-6" Color="Color.Info" Centered=true>
+				<MudTabPanel Text="Arqueros">
+					<div class="row">
+						<div class="col-8">
+							<MudSelect Disabled=Deshabilitar T="Jugador" Margin="Margin.Dense" LockScroll=true Label="Arquero" Strict=true Variant="Variant.Outlined" IconSize="Size.Medium" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Info" SelectedValuesChanged="@(()=>AgregarJugadorAListaCorrspondiente(arquero, 0))" @bind-Value="arquero" >
+									@foreach (Jugador jugador in ListaArqueros)
+									{
+										<MudSelectItem Value="@jugador">@jugador.Nombre</MudSelectItem>
+									}
+							</MudSelect>
+						</div>
+					</div>	
+				</MudTabPanel>
+				<MudTabPanel Text="Defensores">
+					<div class="row ">			
+						@*DEFENSOR 1*@
+						<div class="col-lg-12 col-sm-12 col-md-3">
+
+							<MudSelect Disabled=Deshabilitar  Margin="Margin.Dense" T="Jugador" Label="Defensor 1" LockScroll=true Strict=true Variant="Variant.Outlined" IconSize="Size.Medium" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Info" Adornment="Adornment.End" SelectedValuesChanged="@(()=>AgregarJugadorAListaCorrspondiente(defensor1, 1))" @bind-Value="defensor1" >
+								@foreach (Jugador jugador in ListaDefensores)
+								{
+									<MudSelectItem  Value="@jugador">@jugador.Nombre</MudSelectItem>
+								}
+						</MudSelect>
+						</div>
+						@*DEFENSOR 2*@
+						<div class="col-lg-12 col-sm-12 col-md-3">
+						<MudSelect Disabled=Deshabilitar Margin="Margin.Dense" T="Jugador" Label="Defensor 2" LockScroll=true  Strict=true Variant="Variant.Outlined" IconSize="Size.Medium" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Info" Adornment="Adornment.End" SelectedValuesChanged="@(()=>AgregarJugadorAListaCorrspondiente(defensor2, 2))" @bind-Value="defensor2" >
+								@foreach (Jugador jugador in ListaDefensores)
+								{
+									<MudSelectItem Value="@jugador">@jugador.Nombre</MudSelectItem>
+								}
+						</MudSelect>
+						</div>
+						@*DEFENSOR 3*@
+						<div class="col-lg-12 col-sm-12 col-md-3">
+						<MudSelect Disabled=Deshabilitar Margin="Margin.Dense" T="Jugador" Label="Defensor 3" LockScroll=true  Strict=true Variant="Variant.Outlined" IconSize="Size.Medium" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Info" Adornment="Adornment.End" SelectedValuesChanged="@(()=>AgregarJugadorAListaCorrspondiente(defensor3, 3))" @bind-Value="defensor3" >
+								@foreach (Jugador jugador in ListaDefensores)
+								{
+									<MudSelectItem Value="@jugador">@jugador.Nombre</MudSelectItem>
+								}
+						</MudSelect>
+						</div>
+
+						@*DEFENSOR 4*@
+						@if(alineacion == 442 || alineacion == 433)
+						{
+						<div class="col-lg-12 col-sm-12 col-md-3">
+							<MudSelect Disabled=Deshabilitar Margin="Margin.Dense" T="Jugador" Label="Defensor 4" LockScroll=true  Strict=true Variant="Variant.Outlined" IconSize="Size.Medium" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Info" Adornment="Adornment.End" SelectedValuesChanged="@(()=>AgregarJugadorAListaCorrspondiente(defensor4, 4))" @bind-Value="defensor4" >
+								@foreach (Jugador jugador in ListaDefensores)
+								{
+									<MudSelectItem Value="@jugador">@jugador.Nombre</MudSelectItem>
+								}
+							</MudSelect>
+						</div>
+						}
+					</div>
+				</MudTabPanel>
+				<div class="row " >
+				@*VOLANTE 1*@
+					<MudTabPanel Text="Volantes">
+					<div class="col-lg-12 col-sm-12 col-md-3">
+
+						<MudSelect Disabled=Deshabilitar Margin="Margin.Dense" T="Jugador" Label="Volante 1" LockScroll=true  Strict=true Variant="Variant.Outlined" IconSize="Size.Medium" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Info" Adornment="Adornment.End" SelectedValuesChanged="@(()=>AgregarJugadorAListaCorrspondiente(volante1, 5))" @bind-Value="volante1" >
+								@foreach (Jugador jugador in ListaVolantes)
+								{
+									<MudSelectItem Value="@jugador">@jugador.Nombre</MudSelectItem>
+								}
+						</MudSelect>
+						</div>
+					@*VOLANTE 2*@
+					<div class="col-lg-12 col-sm-12 col-md-3">
+						<MudSelect Disabled=Deshabilitar Margin="Margin.Dense" T="Jugador" Label="Volante 2" LockScroll=true  Strict=true Variant="Variant.Outlined" IconSize="Size.Medium" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Info" Adornment="Adornment.End" SelectedValuesChanged="@(()=>AgregarJugadorAListaCorrspondiente(volante2, 6))" @bind-Value="volante2" >
+								@foreach (Jugador jugador in ListaVolantes)
+								{
+									<MudSelectItem Value="@jugador">@jugador.Nombre</MudSelectItem>
+								}
+						</MudSelect>
+						</div>
+					@*VOLANTE 3*@
+					<div class="col-lg-12 col-sm-12 col-md-3">
+						<MudSelect Disabled=Deshabilitar Margin="Margin.Dense" T="Jugador" Label="Volante 3" LockScroll=true  Strict=true Variant="Variant.Outlined" IconSize="Size.Medium" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Info" Adornment="Adornment.End" SelectedValuesChanged="@(()=>AgregarJugadorAListaCorrspondiente(volante3, 7))" @bind-Value="volante3" >
+								@foreach (Jugador jugador in ListaVolantes)
+								{
+									<MudSelectItem Value="@jugador">@jugador.Nombre</MudSelectItem>
+								}
+						</MudSelect>
+						</div>
+					@*VOLANTE 4*@
+						@if (alineacion != 433)
+						{
+							<div class="col-lg-12 col-sm-12 col-md-3">
+								<MudSelect Disabled=Deshabilitar Margin="Margin.Dense" T="Jugador" Label="Volante 4" LockScroll=true Strict=true Variant="Variant.Outlined" IconSize="Size.Medium" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Info" Adornment="Adornment.End" SelectedValuesChanged="@(()=>AgregarJugadorAListaCorrspondiente(volante4, 8))" @bind-Value="volante4" >
+									@foreach (Jugador jugador in ListaVolantes)
+									{
+										<MudSelectItem Value="@jugador">@jugador.Nombre</MudSelectItem>
+									}
+								</MudSelect>
+							</div>
+						}
+							
+					</MudTabPanel>
+				</div>
+
+				@*DELANTERO 1*@
+				<div class="row ">
+
+					<MudTabPanel Text="Delanteros">
+						<div class="col-lg-12 col-sm-12 col-md-3">
+							<MudSelect Disabled=Deshabilitar Margin="Margin.Dense" T="Jugador" Label="Delantero 1" LockScroll=true Strict=true Variant="Variant.Outlined" IconSize="Size.Medium" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Info" Adornment="Adornment.End" SelectedValuesChanged="@(()=>AgregarJugadorAListaCorrspondiente(delantero1, 9))" @bind-Value="delantero1" >
+									@foreach (Jugador jugador in ListaDelanteros)
+									{
+										<MudSelectItem Value="@jugador">@jugador.Nombre</MudSelectItem>
+									}
+							</MudSelect>
+						</div>
+		
+					@*DELANTERO 2*@
+						<div class="col-lg-12 col-sm-12 col-md-3">
+							<MudSelect Disabled=Deshabilitar Margin="Margin.Dense" T="Jugador" Label="Delantero 2" LockScroll=true Strict=true Variant="Variant.Outlined" IconSize="Size.Medium" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Info" Adornment="Adornment.End" SelectedValuesChanged="@(()=>AgregarJugadorAListaCorrspondiente(Delantero2, 10))" @bind-Value="Delantero2" >
+									@foreach (Jugador jugador in ListaDelanteros)
+									{
+										<MudSelectItem Value="@jugador">@jugador.Nombre</MudSelectItem>
+									}
+							</MudSelect>
+						</div>
+					@*DELANTERO 3*@
+						@if (alineacion == 433 || alineacion == 343)
+						{
+						<div class="col-lg-12 col-sm-12 col-md-3">
+							<MudSelect Disabled=Deshabilitar Margin="Margin.Dense" T="Jugador" Label="Delantero 3" LockScroll=true  Strict=true Variant="Variant.Outlined" IconSize="Size.Medium" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Info" Adornment="Adornment.End" SelectedValuesChanged="@(()=>AgregarJugadorAListaCorrspondiente(Delantero3, 11))" @bind-Value="Delantero3" >
+								@foreach (Jugador jugador in ListaDelanteros)
+								{
+									<MudSelectItem Value="@jugador">@jugador.Nombre</MudSelectItem>
+								}
+							</MudSelect>
+						</div>
+						}
+					</MudTabPanel>
+				</div>
+			</MudTabs>
+		</div>
+		<div style="height: 157px;" class="row"></div>
+	</div>
+
+		@if(!Deshabilitar)
+		{
+		<div class="floating-button">
+			<MudFab Style="background-color : seagreen; color: white; font-size: medium" IconSize="Size.Medium" Label="Grabar Formacion" EndIcon="@Icons.Material.Filled.Save" OnClick="GrabarFormacion"  />
+		</div>
+		}else
+		{
+		<div class="floating-button">
+			<MudFab Style="background-color : sandybrown; color: white; font-size: medium" IconSize="Size.Medium" Label="Cambiar Formacion" EndIcon="@Icons.Material.Filled.Refresh" OnClick="CambiarFormacion"  />
+		</div>
+		}
+
+</div>
+
+
+
+@code {
+	Jugador arquero = new Jugador();
+	Jugador defensor1 = new Jugador();
+	Jugador defensor2 = new Jugador();
+	Jugador defensor3 = new Jugador();
+	Jugador defensor4 = new Jugador();
+	Jugador volante1 = new Jugador();
+	Jugador volante2 = new Jugador();
+	Jugador volante3 = new Jugador();
+	Jugador volante4 = new Jugador();
+	Jugador delantero1 = new Jugador();
+	Jugador Delantero2 = new Jugador();
+	Jugador Delantero3 = new Jugador();
+	Jugador jugadorElegido = new Jugador();
+
+	int alineacion = 0;
+
+}

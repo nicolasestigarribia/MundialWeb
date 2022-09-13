@@ -1,0 +1,93 @@
+﻿@using Mundial.Entidades
+@inject ISnackbar Snackbar;
+@attribute [Authorize]
+
+<div class="margin-top-image">
+<MudCard Style="background-color: transparent; box-shadow:none !important;">
+	<MudCardHeader Class="justify-content-center ">
+			<img class="heigth-image" src="images/toledoMundial.png" alt="no hay imagen" />
+	</MudCardHeader>
+	@foreach (var item in Errors)
+		{
+		<div class="alert alert-danger" role="alert">
+			@item.ErrorMessage
+		</div>
+		}
+	<MudCardContent Class="align-items-center m-0">
+
+		<div class="row">
+			<div class="col-6">
+				<MudText Typo="Typo.subtitle1" Style="color:whitesmoke;">Empresa</MudText>
+				<MudSelect @bind-Value="usuarioInsert.IdEmpresa" Dense="true" T="int" Variant="Variant.Outlined" Required="true">
+					<MudSelectItem Value="0">Elija Empresa...</MudSelectItem>
+					@foreach (Empresa empresa in ListaEmpresas)
+					{
+						<MudSelectItem Value="@empresa.IdEmpresa">@empresa.Nombre </MudSelectItem>
+					}
+				</MudSelect>
+			</div>
+				@if (usuarioInsert.IdEmpresa == 5)
+				{
+					<div class="col-6">
+						<MudText Typo="Typo.subtitle1" Style="color:whitesmoke;">Cuit</MudText>
+						<MudTextField style="color: white;" @bind-Value="usuarioInsert.Cuit" Variant="Variant.Outlined" Margin="Margin.None"
+									For="@(() => usuarioInsert.Cuit)" InputType="InputType.Text" Required="true" />
+					</div>
+				}
+				else
+				{
+					<div class="col-6">
+						<MudText Typo="Typo.subtitle1" Style="color:whitesmoke;">Legajo</MudText>
+						<MudNumericField style="color: white;" HideSpinButtons="true" @bind-Value="@usuarioInsert.Legajo" Variant="Variant.Outlined" />
+					</div>
+				}
+		</div>
+
+		<div class="row d-flex align-items-center">
+			<div class="col-6">
+				<MudText Typo="Typo.subtitle1"  Style="color:whitesmoke;">Nombre</MudText>
+					<MudTextField style="color: white;" Variant="Variant.Outlined" @bind-Value="usuarioInsert.Nombre" Margin="Margin.None" For="@(() => usuarioInsert.Nombre)" />
+			</div>
+			@if(usuarioInsert.IdEmpresa != 5)
+			{
+				<div class="col-6">
+					<MudText Typo="Typo.subtitle1" Style="color:whitesmoke;">Apellido</MudText>
+					<MudTextField style="color: white;" @bind-Value="usuarioInsert.Apellido" Margin="Margin.None" Variant="Variant.Outlined" For="@(() => usuarioInsert.Apellido)" />
+				</div>
+			}
+		</div>
+		<MudText Typo="Typo.subtitle1" Style="color:whitesmoke;">Email</MudText>
+			<MudTextField style="color: white;" @bind-Value="usuarioInsert.Mail" Variant="Variant.Outlined" Margin="Margin.None" For="@(() => usuarioInsert.Mail)" InputType="InputType.Email" Required="true" RequiredError="Ingrese un mail valido" />
+		<div class="row d-flex align-items-center">
+			<div class="col-6">
+				<MudText  Typo="Typo.subtitle1" Style="color:whitesmoke; margin-bottom: 0px;">Usuario</MudText>
+					<MudTextField style="color: white;" @bind-Value="usuarioInsert.Nickname" Variant="Variant.Outlined" Margin="Margin.None" For="@(() => usuarioInsert.Nickname)" Required="true" RequiredError="Ingrese un usuario valido" />
+			</div>
+			<div class="col-6">
+				<MudText Typo="Typo.subtitle1" Style="color:whitesmoke;">Contraseña</MudText>
+				<MudTextField style="color: white;" @bind-Value="usuarioInsert.Password" Variant="Variant.Outlined" Margin="Margin.None" For="@(() => usuarioInsert.Password)" InputType="InputType.Password" Required="true" RequiredError="Ingrese una contraseña valida" />
+			</div>
+		</div>
+		
+		
+		
+	</MudCardContent>
+	<MudCardActions Class="justify-content-center m-0">
+		<div class="row" style="width:100%">
+			<div class="col-lg-6 col-sm-6 bottom-movil">
+				<MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Info" OnClick="GoToInicio">Iniciar sesion</MudButton>
+			</div>
+			<div class="col-lg-6 col-sm-6 bottom-movil">
+				<MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Style="background-color: darkkhaki; color: white;" OnClick="RegistrarUser"> Registrarme </MudButton>
+			</div>
+		</div>
+	</MudCardActions>
+</MudCard>
+</div>
+
+
+@code {
+
+	
+
+}

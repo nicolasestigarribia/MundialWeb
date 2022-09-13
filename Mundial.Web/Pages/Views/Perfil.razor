@@ -1,0 +1,196 @@
+﻿@page "/Perfil"
+@page "/Perfil/{Id:int}"
+@inject ISnackbar Snackbar
+@attribute [Authorize]
+
+<div class="card mt-5" style="border:4px solid #711129;">
+	<div class="card mr-5 mt-4 ml-5 title-color">
+		<div class="card-body">
+			<h4 class="card-title" style="color: white;">Mi Perfil</h4>
+		</div>
+	</div>
+	<br />
+	@foreach (var item in Errors)
+	{
+		<div class="alert alert-danger" role="alert">
+			@item.ErrorMessage
+		</div>
+	}
+	<div class="card-body">
+		<div class="container " >
+			<div class="row">
+			  <div class="col-lg-4">
+				<div class="card mb-4" style="border:3px solid #711129;">
+				  <div class="card-body text-center">
+					  @if(PerfilUser.Imagen == null)
+					  {
+						<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+					  }else
+					  {
+						<img src="@($"data:image/*;base64, {Convert.ToBase64String(PerfilUser.Imagen)}")" alt="avatar" class="card-img" >
+					  }
+					<h5 class="my-3">@PerfilUser.Nombre @PerfilUser.Apellido</h5>
+					<p class="text-muted mb-4" style="font-size: 20px;">@PerfilUser.Empresa.Nombre</p>
+					
+					<div class="row">
+						<div class="col-sm-12 ocultar-div">
+							<InputFile OnChange="OnInputFileChange" id="upload-image-file" accept="image/*" />
+						</div>
+						<div class="col-sm-12">
+							<label for="upload-image-file" class="lbl-upload-image-file rounded-bottom"><i class="fa-solid fa-arrow-up-from-bracket"></i> Carga tu foto</label>
+						</div>
+					</div>
+
+
+					<div class="d-flex justify-content-center mb-2">
+						@if (Editar)
+						{
+							<button type="button" class="btn btn-primary" @onclick="@(()=> Editar = false)">Editar Perfil</button>
+						}else
+						{
+							<button type="button" class="btn btn-success" @onclick="@( async()=>Save())">Grabar</button>
+						}
+					</div>
+				  </div>
+				</div>
+			  </div>
+				<div class="col-lg-8">
+					<div class="card mb-4" style="border:3px solid #711129;">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-sm-3">
+								<p class="mb-0">Nombre</p>
+								</div>
+								<div class="col-sm-9">
+									<p class="text-muted mb-0">@PerfilUser.Nombre @PerfilUser.Apellido</p>
+								</div>
+							</div>
+						<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<p class="mb-0">Usuario</p>
+								</div>
+								<div class="col-sm-9">
+									<p class="text-muted mb-0">@Usuario.NickName</p>
+								</div>
+							</div>
+						<hr />
+							<div class="row">
+								<div class="col-sm-3">
+									<p class="mb-0">Legajo / Cuit</p>
+								</div>
+								<div class="col-sm-9">
+									<p class="text-muted mb-0">
+										@if (@PerfilUser.Legajo > 0)
+										{
+											@PerfilUser.Legajo
+										}
+										else
+										{
+											@PerfilUser.Cuit
+										}
+									</p>
+								</div>
+							</div>
+							<hr>
+							<div class="row d-flex align-items-center">
+								<div class="col-sm-3">
+								<p class="mb-0">Email</p>
+								</div>
+								<div class="col-sm-9">
+									<MudTextField Disabled="@Editar" @bind-Value="Email" Variant="Variant.Text"></MudTextField>
+								</div>
+							</div>
+						<hr>
+							<div class="row d-flex align-items-center">
+								<div class="col-sm-3">
+								<p class="mb-0">Telefono</p>
+								</div>
+								<div class="col-sm-9">
+									<MudNumericField Disabled="@Editar" HideSpinButtons="true" @bind-Value="Telefono" Variant="Variant.Text" Min="0"/>
+								</div>
+							</div>
+						<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<p class="mb-0">Puntaje</p>
+								</div>
+								<div class="col-sm-9">
+									<p class="text-muted mb-0">@PerfilUser.Puntaje  pts</p>
+								</div>
+							</div>
+						<hr>
+							<div class="row">
+								<div class="col-sm-3">
+								<p class="mb-0">Empresa</p>
+								</div>
+								<div class="col-sm-9">
+									<p class="text-muted mb-0">@PerfilUser.Empresa.Nombre</p>
+								</div>
+							</div>
+						<hr>
+							
+							<div class="row d-flex align-items-center">
+								<div class="col-sm-3">
+									<p class="mb-0">Hobby </p>
+								</div>
+								<div class="col-sm-9">
+									<MudSelect Disabled=Editar @bind-Value="IdHobby" Margin="Margin.Dense" T="int" Variant="Variant.Outlined">
+										<MudSelectItem Value="IdHobby">Elija un hobby...</MudSelectItem>
+										@foreach (var hobby in ListaHobbys)
+										{
+											<MudSelectItem Value="@hobby.IdHobby"> @hobby.Nombre</MudSelectItem>
+										}
+									</MudSelect>
+								</div>
+							</div>
+							<hr>
+							<div class="row d-flex align-items-center">
+								<div class="col-sm-3">
+									<p class="mb-0">Deporte </p>
+								</div>
+								<div class="col-sm-9">
+									<p class="text-muted mb-0">
+										<MudSelect Disabled=Editar @bind-Value="IdDeporte" Margin="Margin.Dense" T="int" Variant="Variant.Outlined">
+											<MudSelectItem Value="@IdDeporte">Elija un deporte...</MudSelectItem>
+											@foreach (var deporte in ListaDeportes)
+											{
+												<MudSelectItem Value="@deporte.IdDeporte"> @deporte.Nombre</MudSelectItem>
+											}
+										</MudSelect>
+									</p>
+								</div>
+							</div>
+							<hr>
+							<div class="row d-flex align-items-center">
+								<div class="col-sm-3">
+									<p class="mb-0">Club </p>
+								</div>
+								<div class="col-sm-9">
+									<p class="text-muted mb-0">
+										<MudSelect Disabled=Editar @bind-Value="IdClub" Margin="Margin.Dense" T="int" Variant="Variant.Outlined">
+											<MudSelectItem Value="@IdClub">Elija un club...</MudSelectItem>
+											@foreach (var club in ListaClub)
+											{
+												<MudSelectItem Value="@club.IdClub"> @club.Nombre</MudSelectItem>
+											}
+										</MudSelect>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@code {
+
+	int IdHobby { get; set; } = 0;
+	int IdDeporte { get; set; } = 0;
+	int IdClub { get; set; } = 0;
+	double Telefono { get; set; } = 0;
+	string Email { get; set; } = string.Empty;
+}
